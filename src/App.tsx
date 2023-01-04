@@ -8,7 +8,7 @@ function App() {
     <div className='App'>
       <header className='App-header'>
         <img src={logo} alt='logo' width={20}  />
-        <h1>Wallpapers generator</h1>
+        <h1>Wallpaper generator</h1>
       </header>
       <Canvas width={300} height={300} />
     </div>
