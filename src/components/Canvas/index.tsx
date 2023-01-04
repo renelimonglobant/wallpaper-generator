@@ -1,7 +1,8 @@
 import React, {useEffect, useRef, useState} from "react";
 import './canvas.css';
 import Button from '../atoms/Button'
-import { drawConicalGradient, drawGradient, drawCircle } from "../../API";
+import { drawGradient } from "../../API";
+// import { drawConicalGradient, drawGradient, drawCircle } from "../../API";
 import ConicGradientForm from "../molecules/ConicGradientForm";
 
 type CanvasProps = {
