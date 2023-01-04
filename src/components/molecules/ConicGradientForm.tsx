@@ -126,7 +126,7 @@ const ConicGradientForm = ({
         colorList.map((inputcolor, i) => (
           <React.Fragment key={i}>
             <ColorBox
-              inputText={`Color ${i + 1}`}
+              inputText={inputcolor.color}
               id={`range-${inputcolor.step}`}
               onChangeColor={(color) => {
                 onChangeColor(color, inputcolor.step);

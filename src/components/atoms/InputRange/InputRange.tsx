@@ -1,5 +1,5 @@
 import React from "react";
-
+import './inputRange.css'
 type InputRangeProps = {
   text: string;
   id: string;
@@ -17,7 +17,7 @@ const InputRange = ({
 }: InputRangeProps) => {
   return (
     <div>
-      <label htmlFor={id}>{text}</label>
+      <label className="label-range" htmlFor={id}>{text}</label>
       <input type="range" id={id} name={id} min={min} max={max} {...rest} />
     </div>
   );

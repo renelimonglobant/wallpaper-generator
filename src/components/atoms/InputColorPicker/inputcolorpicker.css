@@ -1,0 +1,11 @@
+.input-picker{
+    min-width: 100px;
+    min-height: 30px;
+}
+.label-picker{
+    /* display: block; */
+    margin-right: 10px;
+    border-radius: 5px;
+    border: solid 1px gray;
+    padding: 2px 7px;
+}

@@ -1,17 +1,15 @@
-import React from "react";
-
+import './inputcolorpicker.css'
 type InputColorPickerProps = {
   text: string;
   id: string;
-  // value?: string;
   [rest: string]: any;
 };
 
 const InputColorPicker = ({ text, id, ...rest }: InputColorPickerProps) => {
   return (
     <>
-      <label htmlFor={id}>{text}</label>
-      <input type="color" id={id} name={id} {...rest} />
+      <label className='label-picker' htmlFor={id}>{text}</label>
+      <input className='input-picker' type="color" id={id} name={id} {...rest} />
     </>
   );
 };
