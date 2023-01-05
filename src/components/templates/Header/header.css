@@ -1,0 +1,12 @@
+.header{
+    background-color: var(--clr-secondary);
+    display: flex;
+    gap: 10px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(2px + 2vmin);
+    color: var(--clr-light);
+    border-bottom: solid 5px var(--clr-alternative);
+    border-top: solid 5px var(--clr-alternative);
+}

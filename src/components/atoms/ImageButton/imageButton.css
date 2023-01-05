@@ -1,3 +1,6 @@
 .img-btn{
     background-color: azure;
 }
+.img-btn:hover{
+    background-color: gainsboro;
+}

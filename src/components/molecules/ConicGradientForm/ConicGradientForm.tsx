@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
-import ColorBox from "../organisms/ColorBox";
-import { drawConicalGradient } from "../../API";
-import InputRange from "../atoms/InputRange/InputRange";
+import ColorBox from "../../organisms/ColorBox";
+import { drawConicalGradient } from "../../../API";
+import InputRange from "../../atoms/InputRange/InputRange";
 
 type ConicGradientFormProps = {
   title: string;
   context: CanvasRenderingContext2D | null;
   numberOfColors?: number;
+  width: number;
+  height: number;
 };
 type ColorObj = {
   step: number;
@@ -17,6 +19,8 @@ const ConicGradientForm = ({
   title,
   context,
   numberOfColors = 3,
+  width,
+  height
 }: ConicGradientFormProps) => {
   const [shine, setShine] = useState<number>(0);
   const [xOffset, setXOffset] = useState<number>(0);
@@ -32,14 +36,14 @@ const ConicGradientForm = ({
     context &&
       drawConicalGradient(
         context as CanvasRenderingContext2D,
-        300,
-        300,
+        width,
+        height,
         colorList,
         xOffset,
         yOffset,
         shine
       );
-  }, [context, colorList, xOffset, yOffset, shine]);
+  }, [context, height, width, colorList, xOffset, yOffset, shine]);
 
   const onChangeShine = (e: React.ChangeEvent<HTMLInputElement>) => {
     setShine(parseInt(e.target.value));
