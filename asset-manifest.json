@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/wallpaper-generator/static/css/main.c9de47cb.css",
-    "main.js": "/wallpaper-generator/static/js/main.b44ec568.js",
+    "main.css": "/wallpaper-generator/static/css/main.774f25a9.css",
+    "main.js": "/wallpaper-generator/static/js/main.f759068d.js",
     "static/js/787.786dbed6.chunk.js": "/wallpaper-generator/static/js/787.786dbed6.chunk.js",
     "index.html": "/wallpaper-generator/index.html",
     "static/media/paste.svg": "/wallpaper-generator/static/media/paste.204bafdd2fe56391bacc2d2fe7973812.svg",
     "static/media/copy.svg": "/wallpaper-generator/static/media/copy.15acb7fc237de7e1c37fbffadeb90669.svg",
     "static/media/burger.svg": "/wallpaper-generator/static/media/burger.517a9bb9bf8ef9a5aaf8471d525b130e.svg",
     "static/media/close.svg": "/wallpaper-generator/static/media/close.c8494eb2642084db18174e0aac7bfcf6.svg",
-    "main.c9de47cb.css.map": "/wallpaper-generator/static/css/main.c9de47cb.css.map",
-    "main.b44ec568.js.map": "/wallpaper-generator/static/js/main.b44ec568.js.map",
+    "main.774f25a9.css.map": "/wallpaper-generator/static/css/main.774f25a9.css.map",
+    "main.f759068d.js.map": "/wallpaper-generator/static/js/main.f759068d.js.map",
     "787.786dbed6.chunk.js.map": "/wallpaper-generator/static/js/787.786dbed6.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c9de47cb.css",
-    "static/js/main.b44ec568.js"
+    "static/css/main.774f25a9.css",
+    "static/js/main.f759068d.js"
   ]
 }
