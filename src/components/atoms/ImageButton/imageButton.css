@@ -1,6 +1,9 @@
 .img-btn{
-    background-color: azure;
+    background-color: var(--clr-light);
+    border: none;
+    border-right: 1px solid var(--clr-dark);
+    border-bottom: 1px solid var(--clr-dark);
 }
 .img-btn:hover{
-    background-color: gainsboro;
+    background-color: var(--clr-alternative);
 }

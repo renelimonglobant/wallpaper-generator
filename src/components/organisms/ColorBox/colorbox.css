@@ -1,0 +1,7 @@
+.color-box{
+    display: flex;
+    margin-bottom: 5px;
+}
+.color-box > *:nth-child(2){
+    flex: 1;
+}

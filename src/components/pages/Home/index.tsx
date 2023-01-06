@@ -38,16 +38,17 @@ function App() {
     <div className="App">
       <Header />
       <Drawer />
-      <main>
-        {/* <Canvas width={400} height={400} ref={canvas} /> */}
+      <main className="container">
         <canvas ref={canvas} id="render" width={width} height={height}></canvas>
-        <ConicGradientForm
-          title="Cono"
-          context={context}
-          width={width}
-          height={height}
-        />
-        <Button element={canvas.current} />
+        <article className="grid">
+          <ConicGradientForm
+            title="Cono"
+            context={context}
+            width={width}
+            height={height}
+          />
+        </article>
+        <Button element={canvas.current} id='save' />
       </main>
       <Footer />
     </div>

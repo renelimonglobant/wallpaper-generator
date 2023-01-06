@@ -16,9 +16,9 @@ const InputRange = ({
   ...rest
 }: InputRangeProps) => {
   return (
-    <div>
+    <div className="range-box">
       <label className="label-range" htmlFor={id}>{text}</label>
-      <input type="range" id={id} name={id} min={min} max={max} {...rest} />
+      <input className="input-range" type="range" id={id} name={id} min={min} max={max} {...rest} />
     </div>
   );
 };

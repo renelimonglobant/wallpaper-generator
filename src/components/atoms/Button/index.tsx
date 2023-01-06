@@ -3,9 +3,10 @@ import "./button.css";
 
 type ButtonProps = {
   element: HTMLCanvasElement | null;
+  id: string;
 };
 
-const Button = ({ element }: ButtonProps) => {
+const Button = ({ element, id }: ButtonProps) => {
   const onSave = () => {
     // both methods working properly
     /*
@@ -28,7 +29,7 @@ const Button = ({ element }: ButtonProps) => {
   };
   return (
     <div>
-      <button id="save-btn" onClick={onSave}>
+      <button className="btn" id={`btn-${id}`} onClick={onSave}>
         Save
       </button>
     </div>

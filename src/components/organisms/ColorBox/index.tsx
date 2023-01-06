@@ -3,6 +3,7 @@ import copy from "../../../assets/copy.svg";
 import ImageButton from "../../atoms/ImageButton";
 import InputColorPicker from "../../atoms/InputColorPicker/InputColorPicker";
 import paste from "../../../assets/paste.svg";
+import './colorbox.css';
 
 type ColorBoxProps = {
   inputText: string;
