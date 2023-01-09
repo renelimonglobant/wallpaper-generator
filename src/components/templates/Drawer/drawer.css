@@ -17,7 +17,7 @@
 
 .toggleBtn:hover,
 .closeBtn:hover {
-  background-color: var(--clr-alternative);
+  background-color: var(--clr-gray);
   border: 1px solid var(--clr-dark);
 }
 
@@ -48,7 +48,7 @@
   position: fixed;
   top: 0px;
   height: 100vh;
-  background-color: var(--clr-alternative);
+  background-color: var(--clr-light);
   /* -webkit-box-shadow: 13px 1px 10px 1px rgba(0, 0, 0, 0.57);
   box-shadow: 13px 1px 10px 1px rgba(0, 0, 0, 0.57); */
 }

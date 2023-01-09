@@ -1,11 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;200;300;400;500;600;700&display=swap');
 
 :root {
-  --clr-primary: #027373;
-  --clr-secondary: #038C7F;
-  --clr-alternative: #A9D9D0;
-  --clr-dark: #0D0D0D;
-  --clr-light: #F2E7DC;
+  --clr-primary: #2274a5;
+  --clr-secondary: #4059ad;
+  --clr-alternative: #73d2de;
+  --clr-accent: #072ac8;
+  --clr-contrast: #06d6a0;
+  --clr-dark: #131b23;
+  --clr-light: #e9f1f7;
+  --clr-gray: #ebebeb;
 }
 
 body {
