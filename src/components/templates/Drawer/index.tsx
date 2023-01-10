@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./drawer.css";
-import close from "../../../assets/close.svg";
-import burger from "../../../assets/burger.svg";
+import Close from "../../../assets/Close";
+import Burger from "../../../assets/Burger";
 
 // type DrawerProps = {};
 // const Drawer = (props: DrawerProps) => {
@@ -13,7 +13,7 @@ const Drawer = () => {
   return (
     <div className='drawer'>
       <button onClick={() => setOpen(true)} className='toggleBtn'>
-        <img src={burger} alt='burger icon' />
+        <Burger />
       </button>
       <div
         onClick={() => setOpen(false)}
@@ -23,7 +23,7 @@ const Drawer = () => {
         <div className={getStyled()}>
           <div className={'closeContainer'}>
             <button className='closeBtn' onClick={() => setOpen(false)}>
-              <img src={close} alt='close icon' />
+              <Close />
             </button>
           </div>
           <nav>

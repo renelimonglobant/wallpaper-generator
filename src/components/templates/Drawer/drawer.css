@@ -14,7 +14,10 @@
   border: none;
   border: 1px solid var(--clr-light);
 }
-
+.toggleBtn svg,
+.closeBtn svg{
+  width: 20px;
+}
 .toggleBtn:hover,
 .closeBtn:hover {
   background-color: var(--clr-gray);

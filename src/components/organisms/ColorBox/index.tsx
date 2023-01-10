@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import copy from "../../../assets/copy.svg";
+import Copy from "../../../assets/Copy";
 import ImageButton from "../../atoms/ImageButton";
 import InputColorPicker from "../../atoms/InputColorPicker/InputColorPicker";
-import paste from "../../../assets/paste.svg";
+import Paste from "../../../assets/Paste";
 import './colorbox.css';
 
 type ColorBoxProps = {
@@ -18,6 +18,7 @@ const ColorBox = ({
   id,
   onChangeColor,
   defaultColor = "#000000",
+  ...rest
 }: ColorBoxProps) => {
   const [color, setColor] = useState<string>(defaultColor);
 
@@ -47,9 +48,10 @@ const ColorBox = ({
         id={`range-${id}`}
         value={color}
         onChange={onChangeCurrentColor}
+        {...rest}
       />
-      <ImageButton imgsrc={copy} imgalt={"copy color"} onClick={onCopy} />
-      <ImageButton imgsrc={paste} imgalt={"paste color"} onClick={onPaste} />
+      <ImageButton svg={<Copy />} onClick={onCopy} />
+      <ImageButton svg={<Paste />} onClick={onPaste} />
     </div>
   );
 };
