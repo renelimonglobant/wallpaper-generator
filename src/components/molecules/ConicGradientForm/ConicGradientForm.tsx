@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
 import ColorBox from "../../organisms/ColorBox";
-import { drawConicalGradient } from "../../../API";
 import InputRange from "../../atoms/InputRange/InputRange";
 
 type ConicGradientFormProps = {
   title: string;
-  context: CanvasRenderingContext2D | null;
-  numberOfColors?: number;
-  width: number;
-  height: number;
+  numberOfColors: number;
+  initialShine: number;
+  initialX: number;
+  initialY: number;
+  initialColors: Array<ColorObj>
+  onChangeForm: (shine: number, x: number, y: number, colors: Array<ColorObj>) => void;
 };
 type ColorObj = {
   step: number;
@@ -17,33 +18,22 @@ type ColorObj = {
 
 const ConicGradientForm = ({
   title,
-  context,
-  numberOfColors = 3,
-  width,
-  height
+  numberOfColors,
+  initialShine,
+  initialX,
+  initialY,
+  initialColors,
+  onChangeForm
 }: ConicGradientFormProps) => {
-  const [shine, setShine] = useState<number>(0);
-  const [xOffset, setXOffset] = useState<number>(0);
-  const [yOffset, setYOffset] = useState<number>(0);
-  const [colorList, setColorList] = useState<ColorObj[]>([
-    { step: 0, color: "#000000" },
-    { step: 0.5, color: "#FFFFFF" },
-    { step: 1, color: "#000000" },
-  ]);
+  const [shine, setShine] = useState<number>(initialShine);
+  const [xOffset, setXOffset] = useState<number>(initialX);
+  const [yOffset, setYOffset] = useState<number>(initialY);
+  const [colorList, setColorList] = useState<ColorObj[]>(initialColors);
 
   useEffect(() => {
-    console.log(colorList);
-    context &&
-      drawConicalGradient(
-        context as CanvasRenderingContext2D,
-        width,
-        height,
-        colorList,
-        xOffset,
-        yOffset,
-        shine
-      );
-  }, [context, height, width, colorList, xOffset, yOffset, shine]);
+    onChangeForm(shine, xOffset, yOffset, colorList);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [colorList, xOffset, yOffset, shine]);
 
   const onChangeShine = (e: React.ChangeEvent<HTMLInputElement>) => {
     setShine(parseInt(e.target.value));
@@ -121,7 +111,7 @@ const ConicGradientForm = ({
         text={`Number of colors: ${colorList.length}`}
         id="range"
         min={2}
-        max={6}
+        max={7}
         step={1}
         defaultValue={numberOfColors}
         onChange={onChangeRange}

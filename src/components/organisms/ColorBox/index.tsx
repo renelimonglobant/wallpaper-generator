@@ -9,7 +9,7 @@ type ColorBoxProps = {
   inputText: string;
   defaultColor: string;
   id: string;
-  onChangeColor: (params: any) => void;
+  onChangeColor: (params: string) => void;
   [rest: string]: any;
 };
 
@@ -24,6 +24,7 @@ const ColorBox = ({
 
   useEffect(() => {
     onChangeColor(color);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [color]);
 
   const onCopy = (_e: React.ChangeEvent<HTMLInputElement>) => {

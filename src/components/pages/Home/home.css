@@ -7,7 +7,6 @@
 .container{
   margin: 0px auto ;
   max-width: 1200px;
-  /* border: 13px dotted var(--clr-dark); */
 }
 .grid{
   display: flex;
@@ -15,30 +14,28 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  /* border: 1px dotted var(--clr-dark); */
 }
 .grid > *{
   min-width: 33%;
   border: 1px dotted var(--clr-dark);
   padding: 10px 35px;
 }
-
+.scroll{
+  overflow-x: scroll;
+}
 @media only screen and (max-width: 992px) {
   .grid > *{
     min-width: 50%;
-    /* background-color: aqua; */
   }
 }
 @media only screen and (max-width: 768px) {
   .grid > *{
     min-width: 50%;
-    /* background-color: greenyellow; */
   }
 }
 @media only screen and (max-width: 576px) {
   .grid > *{
     min-width: 100%;
-    /* background-color: firebrick; */
   }
 }
 
