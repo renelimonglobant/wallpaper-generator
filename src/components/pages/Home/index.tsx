@@ -12,11 +12,12 @@ import { Resolutions } from "../../../store/Resolutions";
 import {
   drawGradientCircle,
   drawConicalGradient,
-  drawGradient,
-  drawNumbers,
-  drawSeconds,
+  // drawGradient,
+  // drawNumbers,
+  // drawSeconds,
 } from "../../../API";
 import Select from "../../atoms/Select";
+import GradientRingForm from "../../molecules/GradientRingForm";
 // import { drawConicalGradient, drawGradient, drawCircle } from "../../API";
 
 function App() {
@@ -41,15 +42,18 @@ function App() {
       );
       // Create gradient
       // drawGradient(context as CanvasRenderingContext2D);
-      // circle
-      // console.log(transformations.conicGradient.colorList);
-      // drawGradientCircle(
-      //   context as CanvasRenderingContext2D,
-      //   "red",
-      //   transformations.width * 2,
-      //   transformations.height * 2,
-      //   transformations.conicGradient.colorList
-      // );
+      // ring
+      drawGradientCircle(
+        context as CanvasRenderingContext2D,
+        transformations.gradientRing.colorList, // transformations.conicGradient.colorList,
+        transformations.gradientRing.x, // x axe
+        transformations.gradientRing.y, // y axe
+        transformations.gradientRing.radius, // radius
+        transformations.gradientRing.scaleX, // scale
+        transformations.gradientRing.scaleY, // scale
+        transformations.gradientRing.shine, // shine
+        transformations.gradientRing.strokeWidth // stroke
+      );
       // drawNumbers(context as CanvasRenderingContext2D, (width/2) * 0.9);
       // drawSeconds(context as CanvasRenderingContext2D, (height/2) * 0.9);
     }
@@ -108,8 +112,7 @@ function App() {
         </section>
         <section className="grid">
           <ConicGradientForm
-            title="Cono"
-            numberOfColors={transformations.conicGradient.colorList.length}
+            title="Background"
             initialShine={transformations.conicGradient.shine}
             initialX={transformations.conicGradient.xOffset}
             initialY={transformations.conicGradient.yOffset}
@@ -118,6 +121,21 @@ function App() {
               dispatch({
                 type: "conical-gradient",
                 value: { shine, xOffset, yOffset, colorList },
+              });
+            }}
+          />
+          <GradientRingForm
+            title="Ring"
+            initialShine={transformations.gradientRing.shine}
+            initialRadius={transformations.gradientRing.radius}
+            initialStroke={transformations.gradientRing.strokeWidth}
+            initialX={transformations.gradientRing.x}
+            initialY={transformations.gradientRing.y}
+            initialColors={transformations.gradientRing.colorList}
+            onChangeForm={(shine, x, y, radius, strokeWidth, colorList) => {
+              dispatch({
+                type: "gradient-ring",
+                value: { enabled: true, colorList, shine, x, y, radius, strokeWidth },
               });
             }}
           />

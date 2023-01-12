@@ -32,9 +32,6 @@ export const drawConicalGradient = (
 
 export const drawGradientCircle = (
   context: CanvasRenderingContext2D,
-  color: string = "#92F070",
-  width: number = 300,
-  height: number = 300,
   values: Array<{ step: number; color: string }> = [
     { step: 0, color: "#F00" },
     { step: 0.2, color: "#00F" },
@@ -43,69 +40,76 @@ export const drawGradientCircle = (
     { step: 0.8, color: "#FF0" },
     { step: 1, color: "#F00" },
   ],
-  xOffset: number = 0,
-  yOffset: number = 0,
-  shine: number = 0,
   x: number = 150,
   y: number = 150,
   r: number = 150,
+  scaleX: number = 300,
+  scaleY: number = 300,
+  shine: number = 0,
   lineWidth: number = 5
 ) => {
   context?.beginPath();
-
   const shineScalar = shine / 4;
-  const xOffsetScalar = xOffset * 5;
-  const yOffsetScalar = yOffset * 5;
+  const xScale = (scaleX + x * 25) / 2;
+  const yScale = (scaleY + y * 25) / 2;
+  const rValue = scaleX + r * 7 > 0 ? scaleX + r * 7 : 1;
+  const rScale = rValue / 2;
+  // console.log(r, scaleX, rValue, rScale);
   const gradient = context.createConicalGradient(
-    width / 2 + xOffsetScalar,
-    height / 2 + yOffsetScalar,
+    xScale,
+    yScale,
     -Math.PI + shineScalar,
     Math.PI + shineScalar
   );
   values.forEach((e) => gradient?.addColorStop(e.step, e.color));
   context.strokeStyle = gradient.pattern;
   context.lineWidth = lineWidth;
-  context?.arc(x, y, r, 0, 2 * Math.PI);
+  context?.arc(xScale, yScale, rScale, 0, 2 * Math.PI);
   context?.stroke();
 };
 
-
-export const drawNumbers = (context: CanvasRenderingContext2D, radius: number) => {
+export const drawNumbers = (
+  context: CanvasRenderingContext2D,
+  radius: number
+) => {
   let ang;
-  context.font = radius*0.09 + "px arial";
-  context.textBaseline="middle";
-  context.textAlign="center";
-  for(let num = 1; num < 13; num++){
-    ang = num * Math.PI / 6;
+  context.font = radius * 0.09 + "px arial";
+  context.textBaseline = "middle";
+  context.textAlign = "center";
+  for (let num = 1; num < 13; num++) {
+    ang = (num * Math.PI) / 6;
     context.rotate(ang);
-    context.translate(0, -radius*0.85);
+    context.translate(0, -radius * 0.85);
     context.rotate(-ang);
     context.fillText(num.toString(), 0, 0);
     context.rotate(ang);
-    context.translate(0, radius*0.85);
+    context.translate(0, radius * 0.85);
     context.rotate(-ang);
   }
-}
+};
 
-export const drawSeconds = (context: CanvasRenderingContext2D, radius: number) =>  {
+export const drawSeconds = (
+  context: CanvasRenderingContext2D,
+  radius: number
+) => {
   let ang;
   const distanceFromCenter = 0.9;
-  context.font = radius*0.1 + "px arial";
-  context.textBaseline="middle";
-  context.textAlign="center";
-  for(let num = 1; num < 61; num++){
-  	if(num%(6-1)!==0){
-      ang = num * Math.PI / 30;
+  context.font = radius * 0.1 + "px arial";
+  context.textBaseline = "middle";
+  context.textAlign = "center";
+  for (let num = 1; num < 61; num++) {
+    if (num % (6 - 1) !== 0) {
+      ang = (num * Math.PI) / 30;
       context.rotate(ang);
-      context.translate(0, -radius*distanceFromCenter);
+      context.translate(0, -radius * distanceFromCenter);
       context.rotate(-ang);
-      context.fillText('.', 0, 0);
+      context.fillText(".", 0, 0);
       context.rotate(ang);
-      context.translate(0, radius*distanceFromCenter);
+      context.translate(0, radius * distanceFromCenter);
       context.rotate(-ang);
     }
   }
-}
+};
 
 export const drawGradient = (
   context: CanvasRenderingContext2D,
