@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState, useReducer } from "react";
 import "./home.css";
-// import Canvas from "../../Canvas";
+import Accordion from "../../templates/Accordion";
 import Button from "../../atoms/Button";
 import ConicGradientForm from "../../molecules/ConicGradientForm/ConicGradientForm";
 import Drawer from "../../templates/Drawer";
@@ -18,7 +18,6 @@ import {
 } from "../../../API";
 import Select from "../../atoms/Select";
 import GradientRingForm from "../../molecules/GradientRingForm";
-// import { drawConicalGradient, drawGradient, drawCircle } from "../../API";
 
 function App() {
   const canvas = useRef<HTMLCanvasElement>(null);
@@ -60,16 +59,18 @@ function App() {
   }, [context, transformations]);
 
   const onSave = () => {
-    // both methods working properly
+    let downloadLink = document.createElement("a");
+    downloadLink.setAttribute("download", "wallpaper.png");
+    let canvasObj = canvas.current;
+    let dataURL = canvasObj?.toDataURL("image/png");
+    let url = dataURL?.replace(
+      /^data:image\/png/,
+      "data:application/octet-stream"
+    );
+    downloadLink.setAttribute("href", url as string);
+    downloadLink.click();
+    // this methods is not working properly on MiWatch
     /*
-        let downloadLink = document.createElement('a');
-        downloadLink.setAttribute('download', 'wallpaper.png');
-        let canvas = element;
-        let dataURL = canvas?.toDataURL('image/png');
-        let url = dataURL?.replace(/^data:image\/png/,'data:application/octet-stream');
-        downloadLink.setAttribute('href', url as string);
-        downloadLink.click();
-        */
     let downloadLink = document.createElement("a");
     downloadLink.setAttribute("download", "wallpaper.png");
     let canvasobj = canvas.current as HTMLCanvasElement;
@@ -78,69 +79,100 @@ function App() {
       downloadLink.setAttribute("href", url);
       downloadLink.click();
     });
+    */
   };
 
   return (
     <div className="App">
       <Header />
-      <Drawer />
       <main className="container">
-        <section className="grid">
-          <Select
-            id="ratio"
-            defaultValue="0"
-            options={Resolutions.map(({ key, label }) => ({
-              value: key,
-              label,
-            }))}
-            setValue={(value) => {
-              const dimensions = Resolutions.find((o) => o.key === value);
-              dispatch({
-                type: "resize-canvas",
-                value: { height: dimensions?.height, width: dimensions?.width },
-              });
-            }}
-          />
-        </section>
-        <section className="scroll">
-          <canvas
-            ref={canvas}
-            id="render"
-            width={transformations.width}
-            height={transformations.height}
-          ></canvas>
-        </section>
-        <section className="grid">
-          <ConicGradientForm
-            title="Background"
-            initialShine={transformations.conicGradient.shine}
-            initialX={transformations.conicGradient.xOffset}
-            initialY={transformations.conicGradient.yOffset}
-            initialColors={transformations.conicGradient.colorList}
-            onChangeForm={(shine, xOffset, yOffset, colorList) => {
-              dispatch({
-                type: "conical-gradient",
-                value: { shine, xOffset, yOffset, colorList },
-              });
-            }}
-          />
-          <GradientRingForm
-            title="Ring"
-            initialShine={transformations.gradientRing.shine}
-            initialRadius={transformations.gradientRing.radius}
-            initialStroke={transformations.gradientRing.strokeWidth}
-            initialX={transformations.gradientRing.x}
-            initialY={transformations.gradientRing.y}
-            initialColors={transformations.gradientRing.colorList}
-            onChangeForm={(shine, x, y, radius, strokeWidth, colorList) => {
-              dispatch({
-                type: "gradient-ring",
-                value: { enabled: true, colorList, shine, x, y, radius, strokeWidth },
-              });
-            }}
-          />
-        </section>
-        <Button id="save" onClick={onSave} text="Save" />
+        <div className="grid">
+          <section className="scroll">
+            <canvas
+              ref={canvas}
+              id="render"
+              width={transformations.width}
+              height={transformations.height}
+            ></canvas>
+            <Drawer />
+            <Button id="save" onClick={onSave} text="Save" />
+          </section>
+          <section className="flex-grid">
+            <Select
+              id="ratio"
+              defaultValue="0"
+              options={Resolutions.map(({ key, label }) => ({
+                value: key,
+                label,
+              }))}
+              setValue={(value) => {
+                const dimensions = Resolutions.find((o) => o.key === value);
+                dispatch({
+                  type: "resize-canvas",
+                  value: {
+                    height: dimensions?.height,
+                    width: dimensions?.width,
+                  },
+                });
+              }}
+            />
+            <Accordion
+              render={[
+                {
+                  title: "Background",
+                  item: (
+                    <ConicGradientForm
+                      initialShine={transformations.conicGradient.shine}
+                      initialX={transformations.conicGradient.xOffset}
+                      initialY={transformations.conicGradient.yOffset}
+                      initialColors={transformations.conicGradient.colorList}
+                      onChangeForm={(shine, xOffset, yOffset, colorList) => {
+                        dispatch({
+                          type: "conical-gradient",
+                          value: { shine, xOffset, yOffset, colorList },
+                        });
+                      }}
+                    />
+                  ),
+                },
+                {
+                  title: "Ring",
+                  item: (
+                    <GradientRingForm
+                      initialShine={transformations.gradientRing.shine}
+                      initialRadius={transformations.gradientRing.radius}
+                      initialStroke={transformations.gradientRing.strokeWidth}
+                      initialX={transformations.gradientRing.x}
+                      initialY={transformations.gradientRing.y}
+                      initialColors={transformations.gradientRing.colorList}
+                      onChangeForm={(
+                        shine,
+                        x,
+                        y,
+                        radius,
+                        strokeWidth,
+                        colorList
+                      ) => {
+                        dispatch({
+                          type: "gradient-ring",
+                          value: {
+                            enabled: true,
+                            colorList,
+                            shine,
+                            x,
+                            y,
+                            radius,
+                            strokeWidth,
+                          },
+                        });
+                      }}
+                    />
+                  ),
+                },
+              ]}
+            />
+          </section>
+        </div>
       </main>
       <Footer />
     </div>

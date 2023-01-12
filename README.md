@@ -13,4 +13,5 @@ Stack:
  - css
  - html
  - create-conical-gradient
+ - react-accessible-accordion
  - useReducer for global state management

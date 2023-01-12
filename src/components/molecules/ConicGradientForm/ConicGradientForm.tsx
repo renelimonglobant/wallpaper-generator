@@ -3,7 +3,6 @@ import ColorBox from "../../organisms/ColorBox";
 import InputRange from "../../atoms/InputRange/InputRange";
 
 type ConicGradientFormProps = {
-  title: string;
   initialShine: number;
   initialX: number;
   initialY: number;
@@ -16,7 +15,6 @@ type ColorObj = {
 };
 
 const ConicGradientForm = ({
-  title,
   initialShine,
   initialX,
   initialY,
@@ -77,7 +75,6 @@ const ConicGradientForm = ({
 
   return (
     <div>
-      <h2>{title}</h2>
       <InputRange
         text={`Shine position: ${shine}`}
         id="shine"

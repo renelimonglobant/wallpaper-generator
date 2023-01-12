@@ -3,14 +3,20 @@ import ColorBox from "../../organisms/ColorBox";
 import InputRange from "../../atoms/InputRange/InputRange";
 
 type ConicGradientFormProps = {
-  title: string;
   initialShine: number;
   initialStroke: number;
   initialX: number;
   initialY: number;
   initialRadius: number;
-  initialColors: Array<ColorObj>
-  onChangeForm: (shine: number, x: number, y: number, r: number, strokeWidth: number, colors: Array<ColorObj>) => void;
+  initialColors: Array<ColorObj>;
+  onChangeForm: (
+    shine: number,
+    x: number,
+    y: number,
+    r: number,
+    strokeWidth: number,
+    colors: Array<ColorObj>
+  ) => void;
 };
 type ColorObj = {
   step: number;
@@ -18,14 +24,13 @@ type ColorObj = {
 };
 
 const ConicGradientForm = ({
-  title,
   initialShine,
   initialX,
   initialY,
   initialRadius,
   initialStroke,
   initialColors,
-  onChangeForm
+  onChangeForm,
 }: ConicGradientFormProps) => {
   const [shine, setShine] = useState<number>(initialShine);
   const [xOffset, setXOffset] = useState<number>(initialX);
@@ -91,7 +96,6 @@ const ConicGradientForm = ({
 
   return (
     <div>
-      <h2>{title}</h2>
       <InputRange
         text={`Shine position: ${shine}`}
         id="shine"
