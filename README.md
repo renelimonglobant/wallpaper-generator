@@ -9,9 +9,11 @@ Wallpapers for smartwatches in a clasical design. Support for multiple resolutio
 
 Stack:
  - React
- - Typescript
- - css
- - html
+ - TypeScript
+ - CSS
+ - HTML
+ - Atomic desing pattern
  - create-conical-gradient
  - react-accessible-accordion
  - useReducer for global state management
+ - emoji-picker-react
