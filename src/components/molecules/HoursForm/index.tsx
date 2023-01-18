@@ -113,7 +113,7 @@ const HoursForm = ({
         max={100}
         step={1}
         defaultValue={radius}
-        onMouseUp={onChangeRange(setRadius)}
+        onChange={onChangeRange(setRadius)} // onMouseUp not needed as soon perofrmance fixed
       />
       <InputRange
         text={`X offset: ${scalarX}`}
@@ -122,8 +122,7 @@ const HoursForm = ({
         max={10}
         step={1}
         defaultValue={scalarX}
-        // onMouseUp={onChangeRange(setShine)}
-        onMouseUp={onChangeRange(setScalarX)}
+        onChange={onChangeRange(setScalarX)}
       />
       <InputRange
         text={`Y offset: ${scalarY}`}
@@ -132,7 +131,7 @@ const HoursForm = ({
         max={10}
         step={1}
         defaultValue={scalarY}
-        onMouseUp={onChangeRange(setScalarY)}
+        onChange={onChangeRange(setScalarY)}
       />
       <InputRange
         text={`Font size: ${fontSize}`}
@@ -141,7 +140,7 @@ const HoursForm = ({
         max={30}
         step={1}
         defaultValue={fontSize}
-        onMouseUp={onChangeRange(setFontSize)}
+        onChange={onChangeRange(setFontSize)}
       />
       <ColorBox
         inputText={color}
