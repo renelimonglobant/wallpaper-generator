@@ -42,6 +42,20 @@ export const reducer = (state: State, action: action) => {
           strokeWidth: action.value.strokeWidth,
         },
       };
+    case "hours":
+      return {
+        ...state,
+        hours: {
+          ...state.hours,
+          enabled: action.value.enabled,
+          color: action.value.color,
+          timeFormat: action.value.timeFormat,
+          x: action.value.x,
+          y: action.value.y,
+          radius: action.value.radius,
+          fontSize: action.value.fontSize,
+        },
+      };
     case "reset":
       return InitialState;
     default:

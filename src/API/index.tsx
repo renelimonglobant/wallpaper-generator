@@ -54,7 +54,6 @@ export const drawGradientCircle = (
   const yScale = (scaleY + y * 25) / 2;
   const rValue = scaleX + r * 7 > 0 ? scaleX + r * 7 : 1;
   const rScale = rValue / 2;
-  // console.log(r, scaleX, rValue, rScale);
   const gradient = context.createConicalGradient(
     xScale,
     yScale,
@@ -63,6 +62,13 @@ export const drawGradientCircle = (
   );
   values.forEach((e) => gradient?.addColorStop(e.step, e.color));
   context.strokeStyle = gradient.pattern;
+  /*
+  context.shadowBlur = 6;
+  context.shadowOffsetX = 0;
+  context.shadowOffsetY = 0;
+  context.shadowColor   = 'rgba(255, 0, 0, 0.9)';
+  context.fillStyle     = gradient.pattern; //'#F2f';
+  */
   context.lineWidth = lineWidth;
   context?.arc(xScale, yScale, rScale, 0, 2 * Math.PI);
   context?.stroke();
@@ -70,22 +76,44 @@ export const drawGradientCircle = (
 
 export const drawNumbers = (
   context: CanvasRenderingContext2D,
-  radius: number
+  radius: number = 0.85,
+  scalarX: number = 227,
+  scalarY: number = 227,
+  fontSize: number = 15,
+  width: number = 227,
+  height: number = 227,
+  color: string = "#05F",
+  timeFormat: Array<string>
 ) => {
-  let ang;
-  context.font = radius * 0.09 + "px arial";
+  const scalarx = width / 2 + scalarX * 5;
+  const scalary = height / 2 + scalarY * 5;
+  const radiusCenter = radius / 100;
+  const font = fontSize + 10;
+  const translation = (radiusCenter * width) / 2;
+  context.save();
+  context.translate(scalarx, scalary);
+  context.font = font + "px bold italic arial";
   context.textBaseline = "middle";
+  context.fillStyle = color;
   context.textAlign = "center";
+  const ang = [
+    0.5235987755982988, 1.0471975511965976, 1.5707963267948966,
+    2.0943951023931953, 2.6179938779914944, 3.141592653589793,
+    3.665191429188092, 4.1887902047863905, 4.71238898038469, 5.235987755982989,
+    5.759586531581287, 6.283185307179586,
+  ];
   for (let num = 1; num < 13; num++) {
-    ang = (num * Math.PI) / 6;
-    context.rotate(ang);
-    context.translate(0, -radius * 0.85);
-    context.rotate(-ang);
-    context.fillText(num.toString(), 0, 0);
-    context.rotate(ang);
-    context.translate(0, radius * 0.85);
-    context.rotate(-ang);
+    // let ang = (num * Math.PI) / 6;
+    context.rotate(ang[num - 1]);
+    context.translate(0, -translation);
+    context.rotate(-ang[num - 1]);
+    context.fillText(timeFormat[num - 1], 0, 0);
+    // context.strokeText(roman[num - 1], 0, 0);
+    context.rotate(ang[num - 1]);
+    context.translate(0, translation);
+    context.rotate(-ang[num - 1]);
   }
+  context.restore();
 };
 
 export const drawSeconds = (

@@ -31,19 +31,11 @@ const ConicGradientForm = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [colorList, xOffset, yOffset, shine]);
 
-  const onChangeShine = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setShine(parseInt(e.target.value));
+  const onChangeRange = (fn: Function) => (e: React.ChangeEvent<HTMLInputElement>) => {
+    fn(parseInt(e.target.value));
   };
 
-  const onChangeXOffset = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setXOffset(parseInt(e.target.value));
-  };
-
-  const onChangeYOffset = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setYOffset(parseInt(e.target.value));
-  };
-
-  const onChangeRange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onChangeColors = (e: React.ChangeEvent<HTMLInputElement>) => {
     const limit = parseInt(e.target.value);
     const newList = [];
     for (let i = 0; i < limit; i++) {
@@ -82,7 +74,8 @@ const ConicGradientForm = ({
         max={60}
         step={1}
         defaultValue={shine}
-        onChange={onChangeShine}
+        // onMouseUp={onChangeRange(setShine)}
+        onChange={onChangeRange(setShine)}
       />
       <InputRange
         text={`Horizontal position: ${xOffset}`}
@@ -91,7 +84,7 @@ const ConicGradientForm = ({
         max={10}
         step={1}
         defaultValue={xOffset}
-        onChange={onChangeXOffset}
+        onChange={onChangeRange(setXOffset)}
       />
       <InputRange
         text={`Vertical position: ${yOffset}`}
@@ -100,7 +93,7 @@ const ConicGradientForm = ({
         max={10}
         step={1}
         defaultValue={yOffset}
-        onChange={onChangeYOffset}
+        onChange={onChangeRange(setYOffset)}
       />
       <InputRange
         text={`Number of colors: ${colorList.length}`}
@@ -109,7 +102,7 @@ const ConicGradientForm = ({
         max={8}
         step={1}
         defaultValue={initialColors.length}
-        onChange={onChangeRange}
+        onChange={onChangeColors}
       />
       {colorList &&
         colorList.map((inputcolor, i) => (

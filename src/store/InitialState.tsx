@@ -10,13 +10,22 @@ export type State = {
   gradientRing: {
     enabled: boolean;
     colorList: Array<{ step: number; color: string }>;
-    scaleX : number;
-    scaleY : number;
+    scaleX: number;
+    scaleY: number;
     x: number;
     y: number;
     radius: number;
     shine: number;
     strokeWidth: number;
+  };
+  hours: {
+    enabled: boolean;
+    radius: number;
+    x: number;
+    y: number;
+    fontSize: number;
+    color: string;
+    timeFormat: Array<string>;
   };
 };
 
@@ -47,5 +56,14 @@ export const InitialState: State = {
     radius: 0, // size - strokeWidth
     shine: 0,
     strokeWidth: 10,
+  },
+  hours: {
+    enabled: true,
+    radius: 85,
+    x: 0,
+    y: 0,
+    fontSize: 9,
+    color: "#D00000",
+    timeFormat: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
   },
 };

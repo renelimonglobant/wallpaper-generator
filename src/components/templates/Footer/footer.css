@@ -1,4 +1,7 @@
 .footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
     background-color: var(--clr-light);
     color: var(--clr-primary);
     padding: 10px 20px;

@@ -4,6 +4,7 @@ import "./select.css";
 type SelectProps = {
   id: string;
   defaultValue: string;
+  title?: string;
   options: Array<{ value: string; label: string }>;
   setValue: (value: string) => void;
   [rest: string]: any;
@@ -13,6 +14,7 @@ const Select = ({
   id,
   defaultValue,
   options,
+  title,  
   setValue,
   ...rest
 }: SelectProps) => {
@@ -24,19 +26,22 @@ const Select = ({
     setValue(value);
   };
   return (
-    <select
-      className="select"
-      id={`select-${id}`}
-      value={selectedOption}
-      onChange={(e) => onSelectChange(e.target.value)}
-      {...rest}
-    >
-      {options.map((o) => (
-        <option key={o.value} value={o.value}>
-          {o.label}
-        </option>
-      ))}
-    </select>
+    <>
+      <label className="select-label" htmlFor={`select-${id}`}>{title}</label>
+      <select
+        className="select"
+        id={`select-${id}`}
+        value={selectedOption}
+        onChange={(e) => onSelectChange(e.target.value)}
+        {...rest}
+      >
+        {options.map((o) => (
+          <option key={o.value} value={o.value}>
+            {o.label}
+          </option>
+        ))}
+      </select>
+    </>
   );
 };
 
