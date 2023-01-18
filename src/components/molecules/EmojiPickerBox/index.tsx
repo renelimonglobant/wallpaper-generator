@@ -60,7 +60,7 @@ const EmojiPickerBox = ({
           onClick={onTogglePicker}
         />
       </div>
-      <div className={show ? "hidden" : ""}>
+      <div className={show ? "" : "hidden"}>
         <EmojiPicker onEmojiClick={onSelectEmoji} height="27em" width="100%" />
       </div>
     </div>
