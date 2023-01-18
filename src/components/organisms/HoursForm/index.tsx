@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import ColorBox from "../../organisms/ColorBox";
+import ColorBox from "../../molecules/ColorBox";
 import InputRange from "../../atoms/InputRange/InputRange";
 import Select from "../../atoms/Select";
-import EmojiPickerBox from "../../organisms/EmojiPickerBox";
+import EmojiPickerBox from "../../molecules/EmojiPickerBox";
 
 type HoursFormProps = {
   initialRadius: number;

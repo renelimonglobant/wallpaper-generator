@@ -3,7 +3,7 @@ import "./home.css";
 import Accordion from "../../templates/Accordion";
 import Button from "../../atoms/Button";
 import Canvas from "../../atoms/Canvas";
-import ConicGradientForm from "../../molecules/ConicGradientForm/ConicGradientForm";
+import ConicGradientForm from "../../organisms/ConicGradientForm/ConicGradientForm";
 import {
   drawConicalGradient,
   drawGradientCircle,
@@ -12,9 +12,9 @@ import {
 } from "../../../API";
 import Drawer from "../../templates/Drawer";
 import Header from "../../templates/Header";
-import HoursForm from "../../molecules/HoursForm";
+import HoursForm from "../../organisms/HoursForm";
 import Footer from "../../templates/Footer";
-import GradientRingForm from "../../molecules/GradientRingForm";
+import GradientRingForm from "../../organisms/GradientRingForm";
 import { InitialState } from "../../../store/InitialState";
 import { reducer } from "../../../store/Reducer";
 import { Resolutions } from "../../../store/Resolutions";
