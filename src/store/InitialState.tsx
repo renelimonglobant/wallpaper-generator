@@ -37,37 +37,39 @@ export const InitialState: State = {
   conicGradient: {
     colorList: [
       { step: 0, color: "#000000" },
-      { step: 0.5, color: "#FFFFFF" },
+      { step: 0.25, color: "#545454" },
+      { step: 0.5, color: "#000000" },
+      { step: 0.75, color: "#545454" },
       { step: 1, color: "#000000" },
     ],
     xOffset: 0,
     yOffset: 0,
-    shine: 0,
+    shine: 7,
   },
   gradientRing: {
     enabled: true,
     colorList: [
-      { step: 0, color: "#D00000" },
-      { step: 0.5, color: "#FFFFFF" },
-      { step: 1, color: "#D00000" },
+      { step: 0, color: "#00FF1E" },
+      { step: 0.5, color: "#6600FF" },
+      { step: 1, color: "#00FF1E" },
     ],
     scaleX: 454,
     scaleY: 454,
     x: 0,
     y: 0,
-    radius: 0, // size - strokeWidth
+    radius: -4, // size - strokeWidth
     shine: 0,
     strokeWidth: 10,
   },
   hours: {
     enabled: true,
-    radius: 85,
+    radius: 82,
     x: 0,
     y: 0,
-    fontSize: 9,
+    fontSize: 15,
     bold: false,
     italic: false,
-    color: "#D00000",
+    color: "#00FF11",
     timeFormat: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
   },
 };

@@ -115,7 +115,6 @@ const HoursForm = ({
         <CheckBox
           id="show-hours"
           label="Show hours"
-          className="show-hours"
           checked={isEnabled}
           onChange={() => setIsEnabled(!isEnabled)}
         />
