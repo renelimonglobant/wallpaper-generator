@@ -32,7 +32,6 @@ function App() {
   const hoursCanvas = useRef<HTMLCanvasElement>(null);
   const [contextHours, setContextHours] =
     useState<CanvasRenderingContext2D | null>(null);
-  // const [refresh, setRefresh] = useState<number>(0);
   // const [context, setContext] = useState<CanvasRenderingContext2D>({} as CanvasRenderingContext2D);
   // const [context, setContext] = useState<CanvasRenderingContext2D>();
   const [transformations, dispatch] = useReducer(reducer, InitialState);
@@ -82,17 +81,18 @@ function App() {
         transformations.height
       );
       // ring
-      drawGradientCircle(
-        contextRing as CanvasRenderingContext2D,
-        transformations.gradientRing.colorList, // transformations.conicGradient.colorList,
-        transformations.gradientRing.x, // x axe
-        transformations.gradientRing.y, // y axe
-        transformations.gradientRing.radius, // radius
-        transformations.gradientRing.scaleX, // scale
-        transformations.gradientRing.scaleY, // scale
-        transformations.gradientRing.shine, // shine
-        transformations.gradientRing.strokeWidth // stroke
-      );
+      transformations.gradientRing.enabled &&
+        drawGradientCircle(
+          contextRing as CanvasRenderingContext2D,
+          transformations.gradientRing.colorList, // colorList,
+          transformations.gradientRing.x, // x axe
+          transformations.gradientRing.y, // y axe
+          transformations.gradientRing.radius, // radius
+          transformations.gradientRing.scaleX, // scale
+          transformations.gradientRing.scaleY, // scale
+          transformations.gradientRing.shine, // shine
+          transformations.gradientRing.strokeWidth // stroke
+        );
     }
   }, [
     contextRing,
@@ -112,17 +112,20 @@ function App() {
         transformations.height
       );
       // hours
-      drawNumbers(
-        contextHours as CanvasRenderingContext2D,
-        transformations.hours.radius,
-        transformations.hours.x,
-        transformations.hours.y,
-        transformations.hours.fontSize,
-        transformations.width,
-        transformations.height,
-        transformations.hours.color,
-        transformations.hours.timeFormat
-      );
+      transformations.hours.enabled &&
+        drawNumbers(
+          contextHours as CanvasRenderingContext2D,
+          transformations.hours.radius,
+          transformations.hours.x,
+          transformations.hours.y,
+          transformations.hours.fontSize,
+          transformations.hours.bold,
+          transformations.hours.italic,
+          transformations.width,
+          transformations.height,
+          transformations.hours.color,
+          transformations.hours.timeFormat
+        );
     }
   }, [
     contextHours,
@@ -168,28 +171,34 @@ function App() {
   };
 
   const onChangeHours = (
+    enabled: boolean,
     radius: number,
     x: number,
     y: number,
     fontSize: number,
+    bold: boolean,
+    italic: boolean,
     color: string,
     timeFormat: Array<string>
   ) => {
     dispatch({
       type: "hours",
       value: {
-        enabled: true,
+        enabled,
         color,
         radius,
         x,
         y,
         fontSize,
+        bold,
+        italic,
         timeFormat,
       },
     });
   };
 
   const onChangeGradientRing = (
+    enabled: boolean,
     shine: number,
     x: number,
     y: number,
@@ -200,7 +209,7 @@ function App() {
     dispatch({
       type: "gradient-ring",
       value: {
-        enabled: true,
+        enabled,
         colorList,
         shine,
         x,
@@ -287,6 +296,7 @@ function App() {
                     title: "Ring",
                     item: (
                       <GradientRingForm
+                        enabled={transformations.gradientRing.enabled}
                         initialShine={transformations.gradientRing.shine}
                         initialRadius={transformations.gradientRing.radius}
                         initialStroke={transformations.gradientRing.strokeWidth}
@@ -308,6 +318,9 @@ function App() {
                         initialColor={transformations.hours.color}
                         initialTimeFormat={transformations.hours.timeFormat}
                         onChangeForm={onChangeHours}
+                        bold={transformations.hours.bold}
+                        italic={transformations.hours.italic}
+                        enabled={transformations.hours.enabled}
                       />
                     ),
                   },

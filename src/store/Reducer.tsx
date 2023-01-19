@@ -54,6 +54,8 @@ export const reducer = (state: State, action: action) => {
           y: action.value.y,
           radius: action.value.radius,
           fontSize: action.value.fontSize,
+          bold: action.value.bold,
+          italic: action.value.italic,
         },
       };
     case "reset":

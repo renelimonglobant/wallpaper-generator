@@ -24,6 +24,8 @@ export type State = {
     x: number;
     y: number;
     fontSize: number;
+    bold: boolean;
+    italic: boolean;
     color: string;
     timeFormat: Array<string>;
   };
@@ -63,6 +65,8 @@ export const InitialState: State = {
     x: 0,
     y: 0,
     fontSize: 9,
+    bold: false,
+    italic: false,
     color: "#D00000",
     timeFormat: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
   },

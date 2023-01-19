@@ -80,6 +80,8 @@ export const drawNumbers = (
   scalarX: number = 227,
   scalarY: number = 227,
   fontSize: number = 15,
+  bold: boolean = false,
+  italic: boolean = false,
   width: number = 227,
   height: number = 227,
   color: string = "#05F",
@@ -92,7 +94,7 @@ export const drawNumbers = (
   const translation = (radiusCenter * width) / 2;
   context.save();
   context.translate(scalarx, scalary);
-  context.font = font + "px bold italic arial";
+  context.font =  `${bold ? '900' : ''} ${italic ? 'Italic' : ''} ${font}px arial`;
   context.textBaseline = "middle";
   context.fillStyle = color;
   context.textAlign = "center";

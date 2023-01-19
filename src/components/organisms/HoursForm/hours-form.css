@@ -1,0 +1,8 @@
+.check-container{
+    display: flex;
+    margin-bottom: 15px;
+}
+.check-container > *{
+    flex: 1;
+    text-align: left;
+}

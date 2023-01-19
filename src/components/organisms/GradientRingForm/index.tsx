@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import CheckBox from "../../atoms/CheckBox";
 import ColorBox from "../../molecules/ColorBox";
 import InputRange from "../../atoms/InputRange/InputRange";
 
@@ -9,7 +10,9 @@ type ConicGradientFormProps = {
   initialY: number;
   initialRadius: number;
   initialColors: Array<ColorObj>;
+  enabled: boolean;
   onChangeForm: (
+    enabled: boolean,
     shine: number,
     x: number,
     y: number,
@@ -30,6 +33,7 @@ const ConicGradientForm = ({
   initialRadius,
   initialStroke,
   initialColors,
+  enabled,
   onChangeForm,
 }: ConicGradientFormProps) => {
   const [shine, setShine] = useState<number>(initialShine);
@@ -38,11 +42,12 @@ const ConicGradientForm = ({
   const [radius, setRadius] = useState<number>(initialRadius);
   const [stroke, setStroke] = useState<number>(initialStroke);
   const [colorList, setColorList] = useState<ColorObj[]>(initialColors);
+  const [isEnabled, setIsEnabled] = useState<boolean>(enabled);
 
   useEffect(() => {
-    onChangeForm(shine, xOffset, yOffset, radius, stroke, colorList);
+    onChangeForm(isEnabled, shine, xOffset, yOffset, radius, stroke, colorList);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [colorList, xOffset, yOffset, shine, radius, stroke]);
+  }, [isEnabled, colorList, xOffset, yOffset, shine, radius, stroke]);
 
   const onChangeShine = (e: React.ChangeEvent<HTMLInputElement>) => {
     setShine(parseInt(e.target.value));
@@ -96,6 +101,15 @@ const ConicGradientForm = ({
 
   return (
     <div>
+      <div className="check-container">
+        <CheckBox
+          id="show-hours"
+          label="Show hours"
+          className="show-hours"
+          checked={isEnabled}
+          onChange={() => setIsEnabled(!isEnabled)}
+        />
+      </div>
       <InputRange
         text={`Shine position: ${shine}`}
         id="shine"
@@ -104,6 +118,7 @@ const ConicGradientForm = ({
         step={1}
         defaultValue={shine}
         onChange={onChangeShine}
+        disabled={!isEnabled}
       />
       <InputRange
         text={`Horizontal position: ${xOffset}`}
@@ -113,6 +128,7 @@ const ConicGradientForm = ({
         step={1}
         defaultValue={xOffset}
         onChange={onChangeXOffset}
+        disabled={!isEnabled}
       />
       <InputRange
         text={`Vertical position: ${yOffset}`}
@@ -122,6 +138,7 @@ const ConicGradientForm = ({
         step={1}
         defaultValue={yOffset}
         onChange={onChangeYOffset}
+        disabled={!isEnabled}
       />
       <InputRange
         text={`Radius: ${radius}`}
@@ -131,6 +148,7 @@ const ConicGradientForm = ({
         step={1}
         defaultValue={radius}
         onChange={onChangeRadius}
+        disabled={!isEnabled}
       />
       <InputRange
         text={`Stroke: ${stroke}`}
@@ -140,6 +158,7 @@ const ConicGradientForm = ({
         step={1}
         defaultValue={stroke}
         onChange={onChangeStroke}
+        disabled={!isEnabled}
       />
       <InputRange
         text={`Number of colors: ${colorList.length}`}
@@ -149,6 +168,7 @@ const ConicGradientForm = ({
         step={1}
         defaultValue={initialColors.length}
         onChange={onChangeRange}
+        disabled={!isEnabled}
       />
       {colorList &&
         colorList.map((inputcolor, i) => (
@@ -160,6 +180,7 @@ const ConicGradientForm = ({
                 onChangeColor(color, inputcolor.step);
               }}
               defaultColor={inputcolor.color}
+              disabled={!isEnabled}
             />
           </React.Fragment>
         ))}

@@ -9,6 +9,7 @@ type ColorBoxProps = {
   inputText: string;
   defaultColor: string;
   id: string;
+  disabled?: boolean;
   onChangeColor: (params: string) => void;
   [rest: string]: any;
 };
@@ -18,6 +19,7 @@ const ColorBox = ({
   id,
   onChangeColor,
   defaultColor = "#000000",
+  disabled = false,
   ...rest
 }: ColorBoxProps) => {
   const [color, setColor] = useState<string>(defaultColor);
@@ -49,6 +51,7 @@ const ColorBox = ({
         id={`range-${id}`}
         value={color}
         onChange={onChangeCurrentColor}
+        disabled={disabled}
         {...rest}
       />
       <ImageButton svg={<Copy />} onClick={onCopy} />

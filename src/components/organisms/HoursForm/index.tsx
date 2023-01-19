@@ -1,21 +1,29 @@
 import React, { useState, useEffect } from "react";
 import ColorBox from "../../molecules/ColorBox";
+import "./hours-form.css";
 import InputRange from "../../atoms/InputRange/InputRange";
 import Select from "../../atoms/Select";
 import EmojiPickerBox from "../../molecules/EmojiPickerBox";
+import CheckBox from "../../atoms/CheckBox";
 
 type HoursFormProps = {
   initialRadius: number;
   initialX: number;
   initialY: number;
   initialFontSize: number;
+  bold: boolean;
+  italic: boolean;
+  enabled: boolean;
   initialColor: string;
   initialTimeFormat: Array<string>;
   onChangeForm: (
+    enabled: boolean,
     radius: number,
     scalarX: number,
     scalarY: number,
     fontSize: number,
+    bold: boolean,
+    italic: boolean,
     color: string,
     timeFormat: Array<string>
   ) => void;
@@ -26,6 +34,9 @@ const HoursForm = ({
   initialX,
   initialY,
   initialFontSize,
+  bold,
+  italic,
+  enabled,
   initialColor,
   initialTimeFormat,
   onChangeForm,
@@ -38,6 +49,9 @@ const HoursForm = ({
   const [color, setColor] = useState<string>(initialColor);
   const [timeFormat, setTimeFormat] = useState<string[]>(initialTimeFormat);
   const [customFormat, setCustomFormat] = useState<boolean>(false);
+  const [isEnabled, setIsEnabled] = useState<boolean>(enabled);
+  const [isBold, setIsBold] = useState<boolean>(bold);
+  const [isItalic, setIsItalic] = useState<boolean>(italic);
   const timeFormats = {
     numeric: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
     romanic: [
@@ -59,9 +73,19 @@ const HoursForm = ({
 
   useEffect(() => {
     hasChanged &&
-      onChangeForm(radius, scalarX, scalarY, fontSize, color, timeFormat);
+      onChangeForm(
+        isEnabled,
+        radius,
+        scalarX,
+        scalarY,
+        fontSize,
+        isBold,
+        isItalic,
+        color,
+        timeFormat
+      );
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [color, radius, scalarX, scalarY, fontSize, timeFormat]);
+  }, [isEnabled, color, radius, scalarX, scalarY, fontSize, isBold, isItalic, timeFormat]);
 
   const onChangeRange =
     (fn: Function) => (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -87,6 +111,15 @@ const HoursForm = ({
 
   return (
     <div>
+      <div className="check-container">
+        <CheckBox
+          id="show-hours"
+          label="Show hours"
+          className="show-hours"
+          checked={isEnabled}
+          onChange={() => setIsEnabled(!isEnabled)}
+        />
+      </div>
       <Select
         id="ratio"
         title="Time Format"
@@ -96,16 +129,34 @@ const HoursForm = ({
           label: i?.charAt(0)?.toUpperCase() + i?.slice(1).toLocaleLowerCase(),
         }))}
         setValue={onChangeTimeFormat}
+        disabled={!isEnabled}
       />
       {customFormat && (
         <EmojiPickerBox
-          title="d"
+          title="Choose your emoji"
           defaultValue=""
           id="custom-text"
           maxLength="50"
           onChangeEmoji={onChangeCustomTimeFormat}
+          disabled={!isEnabled}
         />
       )}
+      <div className="check-container">
+        <CheckBox
+          id="bold"
+          label="Bold"
+          checked={isBold}
+          onChange={() => setIsBold(!isBold)}
+          disabled={!isEnabled}
+        />
+        <CheckBox
+          id="italic"
+          label="Italic"
+          checked={isItalic}
+          onChange={() => setIsItalic(!isItalic)}
+          disabled={!isEnabled}
+        />
+      </div>
       <InputRange
         text={`Radio: ${radius}`}
         id="radius"
@@ -114,6 +165,7 @@ const HoursForm = ({
         step={1}
         defaultValue={radius}
         onChange={onChangeRange(setRadius)} // onMouseUp not needed as soon perofrmance fixed
+        disabled={!isEnabled}
       />
       <InputRange
         text={`X offset: ${scalarX}`}
@@ -123,6 +175,7 @@ const HoursForm = ({
         step={1}
         defaultValue={scalarX}
         onChange={onChangeRange(setScalarX)}
+        disabled={!isEnabled}
       />
       <InputRange
         text={`Y offset: ${scalarY}`}
@@ -132,6 +185,7 @@ const HoursForm = ({
         step={1}
         defaultValue={scalarY}
         onChange={onChangeRange(setScalarY)}
+        disabled={!isEnabled}
       />
       <InputRange
         text={`Font size: ${fontSize}`}
@@ -141,6 +195,7 @@ const HoursForm = ({
         step={1}
         defaultValue={fontSize}
         onChange={onChangeRange(setFontSize)}
+        disabled={!isEnabled}
       />
       <ColorBox
         inputText={color}
@@ -149,6 +204,7 @@ const HoursForm = ({
           onChangeColor(color, 0);
         }}
         defaultColor={color}
+        disabled={!isEnabled}
       />
     </div>
   );
