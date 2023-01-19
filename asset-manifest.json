@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/wallpaper-generator/static/css/main.03808285.css",
-    "main.js": "/wallpaper-generator/static/js/main.85193005.js",
+    "main.js": "/wallpaper-generator/static/js/main.71707e3c.js",
     "static/js/787.786dbed6.chunk.js": "/wallpaper-generator/static/js/787.786dbed6.chunk.js",
     "index.html": "/wallpaper-generator/index.html",
     "main.03808285.css.map": "/wallpaper-generator/static/css/main.03808285.css.map",
-    "main.85193005.js.map": "/wallpaper-generator/static/js/main.85193005.js.map",
+    "main.71707e3c.js.map": "/wallpaper-generator/static/js/main.71707e3c.js.map",
     "787.786dbed6.chunk.js.map": "/wallpaper-generator/static/js/787.786dbed6.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.03808285.css",
-    "static/js/main.85193005.js"
+    "static/js/main.71707e3c.js"
   ]
 }
