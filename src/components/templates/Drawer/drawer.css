@@ -1,27 +1,28 @@
 .drawer img {
   color: var(--clr-secondary);
-  width: 25px;
+  width: 25 px;
   height: 25px;
 }
 
 .toggleBtn,
 .closeBtn {
-  background-color: var(--clr-light);
+  background-color: var(--clr-secondary);
+  color: var(--clr-light);
   outline: none;
   border-radius: 5px;
-  padding: 2px 8px;
+  padding: 0px 4px;
   margin-left: 10px;
   border: none;
-  border: 1px solid var(--clr-light);
+  border: 1px solid var(--clr-secondary);
 }
 .toggleBtn svg,
 .closeBtn svg{
-  width: 20px;
+  width: 24px !important;
 }
 .toggleBtn:hover,
 .closeBtn:hover {
-  background-color: var(--clr-gray);
-  border: 1px solid var(--clr-dark);
+  color: var(--clr-gray);
+  border: 1px solid var(--clr-gray);
 }
 
 .closeContainer {
@@ -50,8 +51,10 @@
   overflow-y: auto;
   position: fixed;
   top: 0px;
+  left: 0;
   height: 100vh;
   background-color: var(--clr-light);
+  color: var(--clr-primary);
   /* -webkit-box-shadow: 13px 1px 10px 1px rgba(0, 0, 0, 0.57);
   box-shadow: 13px 1px 10px 1px rgba(0, 0, 0, 0.57); */
 }
@@ -59,6 +62,22 @@
   position: relative;
   width: 270px;
   height: 100%;
+}
+.aside a {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--clr-primary);
+  padding: 5px 0px !important;
+}
+.aside a:hover, .aside a:hover svg {
+  color: var(--clr-secondary);
+  fill: var(--clr-secondary) !important;
+}
+.aside a svg{
+  fill: var(--clr-primary) !important;
+  width: 20px !important;
+  margin-right: 15px;
+
 }
 .open {
   transition: margin-left 0.7s;

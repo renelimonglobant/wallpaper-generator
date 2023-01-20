@@ -54,7 +54,7 @@ const HoursForm = ({
   const [isItalic, setIsItalic] = useState<boolean>(italic);
   const timeFormats = {
     numeric: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
-    romanic: [
+    roman: [
       "I",
       "II",
       "III",
@@ -85,7 +85,17 @@ const HoursForm = ({
         timeFormat
       );
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isEnabled, color, radius, scalarX, scalarY, fontSize, isBold, isItalic, timeFormat]);
+  }, [
+    isEnabled,
+    color,
+    radius,
+    scalarX,
+    scalarY,
+    fontSize,
+    isBold,
+    isItalic,
+    timeFormat,
+  ]);
 
   const onChangeRange =
     (fn: Function) => (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -100,7 +110,6 @@ const HoursForm = ({
 
   const onChangeTimeFormat = (value: string) => {
     let index = value as keyof typeof timeFormats;
-    console.log(value, timeFormats[index]);
     setTimeFormat(timeFormats[index]);
     setCustomFormat(value === "custom");
     setHasChanged(true);
@@ -121,7 +130,7 @@ const HoursForm = ({
       </div>
       <Select
         id="ratio"
-        title="Time Format"
+        label="Time Format"
         defaultValue="numeric"
         options={Object.keys(timeFormats).map((i) => ({
           value: i,
@@ -157,13 +166,13 @@ const HoursForm = ({
         />
       </div>
       <InputRange
-        text={`Radio: ${radius}`}
+        text={`Radius: ${radius}`}
         id="radius"
         min={1}
         max={100}
         step={1}
         defaultValue={radius}
-        onChange={onChangeRange(setRadius)} // onMouseUp not needed as soon perofrmance fixed
+        onChange={onChangeRange(setRadius)} // onMouseUp not needed anymore as soon performance was fixed
         disabled={!isEnabled}
       />
       <InputRange

@@ -3,7 +3,6 @@ import Input from "../../atoms/Input";
 import EmojiPicker, {
   EmojiClickData,
   Emoji,
-  // EmojiStyle,
 } from "emoji-picker-react";
 import ImageButton from "../../atoms/ImageButton";
 import "./emoji-picker.css";

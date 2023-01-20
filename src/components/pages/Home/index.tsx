@@ -8,9 +8,7 @@ import {
   drawConicalGradient,
   drawGradientCircle,
   drawNumbers,
-  // drawSeconds,
 } from "../../../API";
-// import Drawer from "../../templates/Drawer";
 import Header from "../../templates/Header";
 import HoursForm from "../../organisms/HoursForm";
 import Footer from "../../templates/Footer";
@@ -32,8 +30,6 @@ function App() {
   const hoursCanvas = useRef<HTMLCanvasElement>(null);
   const [contextHours, setContextHours] =
     useState<CanvasRenderingContext2D | null>(null);
-  // const [context, setContext] = useState<CanvasRenderingContext2D>({} as CanvasRenderingContext2D);
-  // const [context, setContext] = useState<CanvasRenderingContext2D>();
   const [transformations, dispatch] = useReducer(reducer, InitialState);
 
   useEffect(() => {
@@ -44,7 +40,6 @@ function App() {
         context.drawImage(gradientCanvas.current as CanvasImageSource, 0, 0);
         context.drawImage(ringCanvas.current as CanvasImageSource, 0, 0);
         context.drawImage(hoursCanvas.current as CanvasImageSource, 0, 0);
-        // drawSeconds(context as CanvasRenderingContext2D, (height/2) * 0.9);
       }, 100);
     }
   }, [context, contextGradient, contextRing, contextHours, transformations]);
@@ -80,18 +75,17 @@ function App() {
         transformations.width,
         transformations.height
       );
-      // ring
       transformations.gradientRing.enabled &&
         drawGradientCircle(
           contextRing as CanvasRenderingContext2D,
-          transformations.gradientRing.colorList, // colorList,
-          transformations.gradientRing.x, // x axe
-          transformations.gradientRing.y, // y axe
-          transformations.gradientRing.radius, // radius
-          transformations.gradientRing.scaleX, // scale
-          transformations.gradientRing.scaleY, // scale
-          transformations.gradientRing.shine, // shine
-          transformations.gradientRing.strokeWidth // stroke
+          transformations.gradientRing.colorList,
+          transformations.gradientRing.x,
+          transformations.gradientRing.y,
+          transformations.gradientRing.radius,
+          transformations.gradientRing.scaleX,
+          transformations.gradientRing.scaleY,
+          transformations.gradientRing.shine,
+          transformations.gradientRing.strokeWidth
         );
     }
   }, [
@@ -111,7 +105,6 @@ function App() {
         transformations.width,
         transformations.height
       );
-      // hours
       transformations.hours.enabled &&
         drawNumbers(
           contextHours as CanvasRenderingContext2D,
@@ -264,8 +257,7 @@ function App() {
               height={transformations.height}
               hidden
             />
-            {/* <Drawer /> */}
-            <Button id="save" onClick={onSave} text="Save" />
+            <Button id="save" onClick={onSave} text="SAVE" />
           </section>
           <section className="flex-grid">
             <div className="scroll settings">
@@ -276,6 +268,7 @@ function App() {
                   value: key,
                   label,
                 }))}
+                label="Resolution"
                 setValue={onChangeRatio}
               />
               <Accordion

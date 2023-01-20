@@ -32,8 +32,8 @@ export type State = {
 };
 
 export const InitialState: State = {
-  width: 454,
-  height: 454,
+  width: 460, // 454
+  height: 460, // 454
   conicGradient: {
     colorList: [
       { step: 0, color: "#000000" },

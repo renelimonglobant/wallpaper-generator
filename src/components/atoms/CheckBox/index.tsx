@@ -15,7 +15,6 @@ const CheckBox = ({ id, label, checked, ...rest }: CheckBoxProps) => {
         id={`checkbox-${id}`}
         type="checkbox"
         checked={checked}
-        //   onChange={handleChange}
         {...rest}
       />
       {label}

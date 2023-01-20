@@ -104,8 +104,7 @@ const ConicGradientForm = ({
       <div className="check-container">
         <CheckBox
           id="show-hours"
-          label="Show hours"
-          className="show-hours"
+          label="Show ring"
           checked={isEnabled}
           onChange={() => setIsEnabled(!isEnabled)}
         />

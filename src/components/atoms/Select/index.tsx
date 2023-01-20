@@ -4,7 +4,7 @@ import "./select.css";
 type SelectProps = {
   id: string;
   defaultValue: string;
-  title?: string;
+  label?: string;
   options: Array<{ value: string; label: string }>;
   setValue: (value: string) => void;
   [rest: string]: any;
@@ -14,7 +14,7 @@ const Select = ({
   id,
   defaultValue,
   options,
-  title,  
+  label,  
   setValue,
   ...rest
 }: SelectProps) => {
@@ -27,7 +27,7 @@ const Select = ({
   };
   return (
     <>
-      <label className="select-label" htmlFor={`select-${id}`}>{title}</label>
+      <label className="select-label" htmlFor={`select-${id}`}>{label}</label>
       <select
         className="select"
         id={`select-${id}`}

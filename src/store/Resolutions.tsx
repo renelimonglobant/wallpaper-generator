@@ -9,8 +9,8 @@ export const Resolutions: RatioOptions[] = [
   {
     key: 'mi-watch',
     label: 'Mi Watch',
-    width: 454,
-    height: 454,
+    width: 460, // 454
+    height: 460, // 454
   },
   {
     key: 'apple-watch-7-8-42',
