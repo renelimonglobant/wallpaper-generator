@@ -4,8 +4,8 @@ import {
   AccordionItemHeading,
   AccordionItemButton,
   AccordionItemPanel,
-} from "react-accessible-accordion";
-import "./accordion.css";
+} from 'react-accessible-accordion';
+import './accordion.css';
 
 type AccordionProps = {
   render: Array<{ title: string; item: React.ReactNode }>;

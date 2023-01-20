@@ -1,65 +1,65 @@
 .App {
-  text-align: center;
+  /* text-align: center; */
 }
-#render{
+#render {
   border: 1px solid #000;
 }
-.container{
-  margin: 0px auto ;
+.container {
+  margin: 0px auto;
   max-width: 1200px;
 }
-.grid{
+.grid {
   display: grid;
   grid-template-columns: 2fr 1fr;
 }
-.flex-grid{
+.flex-grid {
   display: flex;
   gap: 10px;
   flex-direction: column;
   align-items: center;
   flex-wrap: wrap;
 }
-.flex-grid > *{
+.flex-grid > * {
   width: 100%;
 }
-.scroll{
+.scroll {
   overflow-x: scroll;
   padding: 10px 0;
 }
-.scroll.settings{
+.scroll.settings {
   max-height: 80vh;
 }
 @media only screen and (max-width: 992px) {
-  .grid{
+  .grid {
     grid-template-columns: 3fr 2fr;
   }
-  .flex-grid > *{
+  .flex-grid > * {
     min-width: 50%;
   }
-  .scroll.settings{
+  .scroll.settings {
     max-height: 80vh;
   }
-  }
+}
 @media only screen and (max-width: 768px) {
-  .grid{
+  .grid {
     grid-template-columns: 1fr;
   }
-  .flex-grid > *{
+  .flex-grid > * {
     min-width: 50%;
   }
-  .scroll.settings{
+  .scroll.settings {
     max-height: 250px;
     margin-bottom: 7vh;
   }
 }
 @media only screen and (max-width: 576px) {
-    .grid{
-      grid-template-columns: 1fr;
-    }
-    .flex-grid > *{
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .flex-grid > * {
     min-width: 100%;
   }
-  .scroll.settings{
+  .scroll.settings {
     max-height: 220px;
     margin-bottom: 7vh;
   }

@@ -1,14 +1,14 @@
-.img-btn{
-    background-color: var(--clr-light);
-    border: none;
-    border-right: 1px solid var(--clr-dark);
-    border-bottom: 1px solid var(--clr-dark);
-    width: 30px;
-    height: auto;
+.img-btn {
+  background-color: var(--clr-light);
+  border: none;
+  border-right: 1px solid var(--clr-dark);
+  border-bottom: 1px solid var(--clr-dark);
+  width: 30px;
+  height: auto;
 }
-.img-btn:hover{
-    background-color: var(--clr-gray);
+.img-btn:hover {
+  background-color: var(--clr-gray);
 }
-.img-btn svg{
-    color: var(--clr-secondary);
+.img-btn svg {
+  color: var(--clr-secondary);
 }

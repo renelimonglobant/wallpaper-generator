@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
-import ColorBox from "../../molecules/ColorBox";
-import "./hours-form.css";
-import InputRange from "../../atoms/InputRange/InputRange";
-import Select from "../../atoms/Select";
-import EmojiPickerBox from "../../molecules/EmojiPickerBox";
-import CheckBox from "../../atoms/CheckBox";
+import React, { useState, useEffect } from 'react';
+import ColorBox from '../../molecules/ColorBox';
+import './hours-form.css';
+import InputRange from '../../atoms/InputRange/InputRange';
+import Select from '../../atoms/Select';
+import EmojiPickerBox from '../../molecules/EmojiPickerBox';
+import CheckBox from '../../atoms/CheckBox';
 
 type HoursFormProps = {
   initialRadius: number;
@@ -53,22 +53,22 @@ const HoursForm = ({
   const [isBold, setIsBold] = useState<boolean>(bold);
   const [isItalic, setIsItalic] = useState<boolean>(italic);
   const timeFormats = {
-    numeric: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
+    numeric: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
     roman: [
-      "I",
-      "II",
-      "III",
-      "IV",
-      "V",
-      "VI",
-      "VII",
-      "VIII",
-      "IX",
-      "X",
-      "XI",
-      "XII",
+      'I',
+      'II',
+      'III',
+      'IV',
+      'V',
+      'VI',
+      'VII',
+      'VIII',
+      'IX',
+      'X',
+      'XI',
+      'XII',
     ],
-    custom: ["", "", "", "", "", "", "", "", "", "", "", ""],
+    custom: ['', '', '', '', '', '', '', '', '', '', '', ''],
   };
 
   useEffect(() => {
@@ -111,11 +111,11 @@ const HoursForm = ({
   const onChangeTimeFormat = (value: string) => {
     let index = value as keyof typeof timeFormats;
     setTimeFormat(timeFormats[index]);
-    setCustomFormat(value === "custom");
+    setCustomFormat(value === 'custom');
     setHasChanged(true);
   };
   const onChangeCustomTimeFormat = (e: string) => {
-    setTimeFormat([...e.split(","), ...timeFormats.custom]);
+    setTimeFormat([...e.split(','), ...timeFormats.custom]);
   };
 
   return (

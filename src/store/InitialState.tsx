@@ -36,11 +36,11 @@ export const InitialState: State = {
   height: 460, // 454
   conicGradient: {
     colorList: [
-      { step: 0, color: "#000000" },
-      { step: 0.25, color: "#545454" },
-      { step: 0.5, color: "#000000" },
-      { step: 0.75, color: "#545454" },
-      { step: 1, color: "#000000" },
+      { step: 0, color: '#000000' },
+      { step: 0.25, color: '#545454' },
+      { step: 0.5, color: '#000000' },
+      { step: 0.75, color: '#545454' },
+      { step: 1, color: '#000000' },
     ],
     xOffset: 0,
     yOffset: 0,
@@ -49,9 +49,9 @@ export const InitialState: State = {
   gradientRing: {
     enabled: true,
     colorList: [
-      { step: 0, color: "#00FF1E" },
-      { step: 0.5, color: "#6600FF" },
-      { step: 1, color: "#00FF1E" },
+      { step: 0, color: '#00FF1E' },
+      { step: 0.5, color: '#6600FF' },
+      { step: 1, color: '#00FF1E' },
     ],
     scaleX: 454,
     scaleY: 454,
@@ -69,7 +69,7 @@ export const InitialState: State = {
     fontSize: 15,
     bold: false,
     italic: false,
-    color: "#00FF11",
-    timeFormat: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
+    color: '#00FF11',
+    timeFormat: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
   },
 };

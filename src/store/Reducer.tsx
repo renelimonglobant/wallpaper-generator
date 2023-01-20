@@ -1,4 +1,4 @@
-import { InitialState, State } from "./InitialState";
+import { InitialState, State } from './InitialState';
 
 type action = {
   type: string;
@@ -7,7 +7,7 @@ type action = {
 
 export const reducer = (state: State, action: action) => {
   switch (action.type) {
-    case "resize-canvas":
+    case 'resize-canvas':
       return {
         ...state,
         height: action.value.height,
@@ -15,10 +15,10 @@ export const reducer = (state: State, action: action) => {
         gradientRing: {
           ...state.gradientRing,
           scaleX: action.value.width,
-          scaleY: action.value.height
-        }
+          scaleY: action.value.height,
+        },
       };
-    case "conical-gradient":
+    case 'conical-gradient':
       return {
         ...state,
         conicGradient: {
@@ -28,7 +28,7 @@ export const reducer = (state: State, action: action) => {
           yOffset: action.value.yOffset,
         },
       };
-    case "gradient-ring":
+    case 'gradient-ring':
       return {
         ...state,
         gradientRing: {
@@ -42,7 +42,7 @@ export const reducer = (state: State, action: action) => {
           strokeWidth: action.value.strokeWidth,
         },
       };
-    case "hours":
+    case 'hours':
       return {
         ...state,
         hours: {
@@ -58,7 +58,7 @@ export const reducer = (state: State, action: action) => {
           italic: action.value.italic,
         },
       };
-    case "reset":
+    case 'reset':
       return InitialState;
     default:
       return state;

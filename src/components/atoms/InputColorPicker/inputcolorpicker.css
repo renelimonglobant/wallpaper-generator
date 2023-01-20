@@ -1,11 +1,11 @@
-.input-picker{
-    min-width: auto;
-    min-height: 30px;
+.input-picker {
+  min-width: auto;
+  min-height: 30px;
 }
-.label-picker{
-    border-radius: 5px 0px 0px 5px;
-    border: solid 1px gray;
-    border-right: none;
-    padding: 3px 10px;
-    text-transform: uppercase;
+.label-picker {
+  border-radius: 5px 0px 0px 5px;
+  border: solid 1px gray;
+  border-right: none;
+  padding: 3px 10px;
+  text-transform: uppercase;
 }

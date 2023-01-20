@@ -1,4 +1,4 @@
-import './input.css'
+import './input.css';
 type InputProps = {
   text: string;
   id: string;
@@ -9,8 +9,10 @@ type InputProps = {
 const Input = ({ text, id, type = 'text', ...rest }: InputProps) => {
   return (
     <>
-      <label className='label-input' htmlFor={id}>{text}</label>
-      <input className='input-text' type={type} id={id} name={id} {...rest} />
+      <label className="label-input" htmlFor={id}>
+        {text}
+      </label>
+      <input className="input-text" type={type} id={id} name={id} {...rest} />
     </>
   );
 };

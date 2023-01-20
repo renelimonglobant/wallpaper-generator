@@ -1,4 +1,4 @@
-import './inputcolorpicker.css'
+import './inputcolorpicker.css';
 type InputColorPickerProps = {
   text: string;
   id: string;
@@ -8,8 +8,16 @@ type InputColorPickerProps = {
 const InputColorPicker = ({ text, id, ...rest }: InputColorPickerProps) => {
   return (
     <>
-      <label className='label-picker' htmlFor={id}>{text}</label>
-      <input className='input-picker' type="color" id={id} name={id} {...rest} />
+      <label className="label-picker" htmlFor={id}>
+        {text}
+      </label>
+      <input
+        className="input-picker"
+        type="color"
+        id={id}
+        name={id}
+        {...rest}
+      />
     </>
   );
 };

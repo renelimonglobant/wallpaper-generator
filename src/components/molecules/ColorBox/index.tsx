@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import Copy from "../../../assets/Copy";
-import ImageButton from "../../atoms/ImageButton";
-import InputColorPicker from "../../atoms/InputColorPicker/InputColorPicker";
-import Paste from "../../../assets/Paste";
+import React, { useState, useEffect } from 'react';
+import Copy from '../../../assets/Copy';
+import ImageButton from '../../atoms/ImageButton';
+import InputColorPicker from '../../atoms/InputColorPicker/InputColorPicker';
+import Paste from '../../../assets/Paste';
 import './colorbox.css';
 
 type ColorBoxProps = {
@@ -18,7 +18,7 @@ const ColorBox = ({
   inputText,
   id,
   onChangeColor,
-  defaultColor = "#000000",
+  defaultColor = '#000000',
   disabled = false,
   ...rest
 }: ColorBoxProps) => {
@@ -35,7 +35,7 @@ const ColorBox = ({
 
   const onPaste = (_e: React.ChangeEvent<HTMLInputElement>) => {
     navigator.clipboard.readText().then((clipText) => {
-      const text = /^#[0-9A-F]{6}$/i.test(clipText) ? clipText : "#000000";
+      const text = /^#[0-9A-F]{6}$/i.test(clipText) ? clipText : '#000000';
       setColor(text);
     });
   };

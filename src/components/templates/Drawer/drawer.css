@@ -16,7 +16,7 @@
   border: 1px solid var(--clr-secondary);
 }
 .toggleBtn svg,
-.closeBtn svg{
+.closeBtn svg {
   width: 24px !important;
 }
 .toggleBtn:hover,
@@ -63,21 +63,26 @@
   width: 270px;
   height: 100%;
 }
+.aside .list{
+  padding: 0px 20px;
+}
 .aside a {
+  text-align: left;
+  font-size: 20px;
   display: inline-block;
   text-decoration: none;
   color: var(--clr-primary);
   padding: 5px 0px !important;
 }
-.aside a:hover, .aside a:hover svg {
+.aside a:hover,
+.aside a:hover svg {
   color: var(--clr-secondary);
   fill: var(--clr-secondary) !important;
 }
-.aside a svg{
+.aside a svg {
   fill: var(--clr-primary) !important;
   width: 20px !important;
   margin-right: 15px;
-
 }
 .open {
   transition: margin-left 0.7s;

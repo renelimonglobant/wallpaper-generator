@@ -1,57 +1,62 @@
-.header{
-    background-color: var(--clr-secondary);
-    display: flex;
-    gap: 10px;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(2px + 2vmin);
-    color: var(--clr-light);
-    border-bottom: solid 5px var(--clr-alternative);
-    border-top: solid 5px var(--clr-alternative);
+.header {
+  background-color: var(--clr-secondary);
+  display: flex;
+  gap: 10px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-size: calc(2px + 2vmin);
+  color: var(--clr-light);
+  border-bottom: solid 5px var(--clr-alternative);
+  border-top: solid 5px var(--clr-alternative);
 }
-.header .head{
-    flex: 5;
+.header .head {
+  flex: 5;
+  text-align: center;
 }
 .header .head h1 {
-    padding: 5px;
-    margin-left: 10px;
+  display: inline-block;
+  padding: 5px;
+  margin-left: 10px;
 }
 .header .head img {
-    width: 25px;
+  width: 25px;
 }
 .header .head > * {
-    display: inline-block;
+  display: inline-block;
 }
-.header .side{
-    flex: 2;
+.header .side {
+  flex: 2;
+  text-align: center;
 }
-.header .side a{
-    margin: 0 6px;
+.header .side a {
+  margin: 0 6px;
 }
-.header .side svg{
-    display: inline;
-    width: 27px;
-    height: auto;
-    fill: var(--clr-light);
+.header .side svg {
+  display: inline;
+  width: 27px;
+  height: auto;
+  fill: var(--clr-light);
 }
-.header .side svg:hover{
-    fill: var(--clr-alternative);
+.header .side svg:hover {
+  fill: var(--clr-alternative);
 }
-.drawer{ display: none; }
+.drawer {
+  display: none;
+}
 
 @media only screen and (max-width: 576px) {
-    .header .head img {
-        display: none;
-    }    
-    .header .head h1 {
-        font-size: 1.5em;
-        margin: 0;
-    }    
-    .drawer{
-      display: block;
-    }
-    .header .side .icons{
-        display: none;
-    }
+  .header .head img {
+    display: none;
+  }
+  .header .head h1 {
+    font-size: 1.8em;
+    margin: 0;
+  }
+  .drawer {
+    display: block;
+  }
+  .header .side .icons {
+    display: none;
+  }
 }

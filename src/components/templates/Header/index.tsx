@@ -1,24 +1,24 @@
-import logo from "../../../assets/clock.png";
-import Github from "../../../assets/Github";
-import Twitter from "../../../assets/Twitter";
-import Linkedin from "../../../assets/Linkedin";
-import "./header.css";
-import Drawer from "../Drawer";
+import logo from '../../../assets/clock.png';
+import Github from '../../../assets/Github';
+import Twitter from '../../../assets/Twitter';
+import Linkedin from '../../../assets/Linkedin';
+import './header.css';
+import Drawer from '../Drawer';
 
 const links = [
   {
-    title: "Github",
-    link: "https://github.com/soyreneon/wallpaper-generator",
+    title: 'Github',
+    link: 'https://github.com/soyreneon/wallpaper-generator',
     icon: <Github />,
   },
   {
-    title: "Linkedin",
-    link: "https://mx.linkedin.com/in/soyreneon",
+    title: 'Linkedin',
+    link: 'https://mx.linkedin.com/in/soyreneon',
     icon: <Linkedin />,
   },
   {
-    title: "Twitter",
-    link: "https://twitter.com/soyreneon",
+    title: 'Twitter',
+    link: 'https://twitter.com/soyreneon',
     icon: <Twitter />,
   },
 ];

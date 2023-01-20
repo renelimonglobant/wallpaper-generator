@@ -1,22 +1,22 @@
-import { useEffect, useRef, useState, useReducer } from "react";
-import "./home.css";
-import Accordion from "../../templates/Accordion";
-import Button from "../../atoms/Button";
-import Canvas from "../../atoms/Canvas";
-import ConicGradientForm from "../../organisms/ConicGradientForm/ConicGradientForm";
+import { useEffect, useRef, useState, useReducer } from 'react';
+import './home.css';
+import Accordion from '../../templates/Accordion';
+import Button from '../../atoms/Button';
+import Canvas from '../../atoms/Canvas';
+import ConicGradientForm from '../../organisms/ConicGradientForm/ConicGradientForm';
 import {
   drawConicalGradient,
   drawGradientCircle,
   drawNumbers,
-} from "../../../API";
-import Header from "../../templates/Header";
-import HoursForm from "../../organisms/HoursForm";
-import Footer from "../../templates/Footer";
-import GradientRingForm from "../../organisms/GradientRingForm";
-import { InitialState } from "../../../store/InitialState";
-import { reducer } from "../../../store/Reducer";
-import { Resolutions } from "../../../store/Resolutions";
-import Select from "../../atoms/Select";
+} from '../../../API';
+import Header from '../../templates/Header';
+import HoursForm from '../../organisms/HoursForm';
+import Footer from '../../templates/Footer';
+import GradientRingForm from '../../organisms/GradientRingForm';
+import { InitialState } from '../../../store/InitialState';
+import { reducer } from '../../../store/Reducer';
+import { Resolutions } from '../../../store/Resolutions';
+import Select from '../../atoms/Select';
 
 function App() {
   const canvas = useRef<HTMLCanvasElement>(null);
@@ -34,7 +34,7 @@ function App() {
 
   useEffect(() => {
     const c = canvas.current as HTMLCanvasElement | null;
-    setContext(c?.getContext("2d") as CanvasRenderingContext2D);
+    setContext(c?.getContext('2d') as CanvasRenderingContext2D);
     if (context) {
       setTimeout(() => {
         context.drawImage(gradientCanvas.current as CanvasImageSource, 0, 0);
@@ -46,7 +46,7 @@ function App() {
 
   useEffect(() => {
     const c = gradientCanvas.current as HTMLCanvasElement | null;
-    setContextGradient(c?.getContext("2d") as CanvasRenderingContext2D);
+    setContextGradient(c?.getContext('2d') as CanvasRenderingContext2D);
     if (contextGradient) {
       drawConicalGradient(
         contextGradient as CanvasRenderingContext2D,
@@ -67,7 +67,7 @@ function App() {
 
   useEffect(() => {
     const c = ringCanvas.current as HTMLCanvasElement | null;
-    setContextRing(c?.getContext("2d") as CanvasRenderingContext2D);
+    setContextRing(c?.getContext('2d') as CanvasRenderingContext2D);
     if (contextRing) {
       contextRing.clearRect(
         0,
@@ -97,7 +97,7 @@ function App() {
 
   useEffect(() => {
     const c = hoursCanvas.current as HTMLCanvasElement | null;
-    setContextHours(c?.getContext("2d") as CanvasRenderingContext2D);
+    setContextHours(c?.getContext('2d') as CanvasRenderingContext2D);
     if (contextHours) {
       contextHours.clearRect(
         0,
@@ -128,15 +128,15 @@ function App() {
   ]);
 
   const onSave = () => {
-    let downloadLink = document.createElement("a");
-    downloadLink.setAttribute("download", "wallpaper.png");
+    let downloadLink = document.createElement('a');
+    downloadLink.setAttribute('download', 'wallpaper.png');
     let canvasObj = canvas.current;
-    let dataURL = canvasObj?.toDataURL("image/png");
+    let dataURL = canvasObj?.toDataURL('image/png');
     let url = dataURL?.replace(
       /^data:image\/png/,
-      "data:application/octet-stream"
+      'data:application/octet-stream'
     );
-    downloadLink.setAttribute("href", url as string);
+    downloadLink.setAttribute('href', url as string);
     downloadLink.click();
     // this methods is not working properly on MiWatch
     /*
@@ -158,7 +158,7 @@ function App() {
     colorList: Array<{}>
   ) => {
     dispatch({
-      type: "conical-gradient",
+      type: 'conical-gradient',
       value: { shine, xOffset, yOffset, colorList },
     });
   };
@@ -175,7 +175,7 @@ function App() {
     timeFormat: Array<string>
   ) => {
     dispatch({
-      type: "hours",
+      type: 'hours',
       value: {
         enabled,
         color,
@@ -200,7 +200,7 @@ function App() {
     colorList: Array<{}>
   ) => {
     dispatch({
-      type: "gradient-ring",
+      type: 'gradient-ring',
       value: {
         enabled,
         colorList,
@@ -216,7 +216,7 @@ function App() {
   const onChangeRatio = (value: string) => {
     const dimensions = Resolutions.find((o) => o.key === value);
     dispatch({
-      type: "resize-canvas",
+      type: 'resize-canvas',
       value: {
         height: dimensions?.height,
         width: dimensions?.width,
@@ -274,7 +274,7 @@ function App() {
               <Accordion
                 render={[
                   {
-                    title: "Background",
+                    title: 'Background',
                     item: (
                       <ConicGradientForm
                         initialShine={transformations.conicGradient.shine}
@@ -286,7 +286,7 @@ function App() {
                     ),
                   },
                   {
-                    title: "Ring",
+                    title: 'Ring',
                     item: (
                       <GradientRingForm
                         enabled={transformations.gradientRing.enabled}
@@ -301,7 +301,7 @@ function App() {
                     ),
                   },
                   {
-                    title: "Hours",
+                    title: 'Hours',
                     item: (
                       <HoursForm
                         initialRadius={transformations.hours.radius}

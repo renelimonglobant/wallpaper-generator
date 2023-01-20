@@ -1,16 +1,16 @@
-import "create-conical-gradient";
+import 'create-conical-gradient';
 
 export const drawConicalGradient = (
   context: CanvasRenderingContext2D,
   width: number = 300,
   height: number = 300,
   values: Array<{ step: number; color: string }> = [
-    { step: 0, color: "#F00" },
-    { step: 0.2, color: "#00F" },
-    { step: 0.4, color: "#0FF" },
-    { step: 0.6, color: "#F0F" },
-    { step: 0.8, color: "#FF0" },
-    { step: 1, color: "#F00" },
+    { step: 0, color: '#F00' },
+    { step: 0.2, color: '#00F' },
+    { step: 0.4, color: '#0FF' },
+    { step: 0.6, color: '#F0F' },
+    { step: 0.8, color: '#FF0' },
+    { step: 1, color: '#F00' },
   ],
   xOffset: number = 0,
   yOffset: number = 0,
@@ -33,12 +33,12 @@ export const drawConicalGradient = (
 export const drawGradientCircle = (
   context: CanvasRenderingContext2D,
   values: Array<{ step: number; color: string }> = [
-    { step: 0, color: "#F00" },
-    { step: 0.2, color: "#00F" },
-    { step: 0.4, color: "#0FF" },
-    { step: 0.6, color: "#F0F" },
-    { step: 0.8, color: "#FF0" },
-    { step: 1, color: "#F00" },
+    { step: 0, color: '#F00' },
+    { step: 0.2, color: '#00F' },
+    { step: 0.4, color: '#0FF' },
+    { step: 0.6, color: '#F0F' },
+    { step: 0.8, color: '#FF0' },
+    { step: 1, color: '#F00' },
   ],
   x: number = 150,
   y: number = 150,
@@ -84,7 +84,7 @@ export const drawNumbers = (
   italic: boolean = false,
   width: number = 227,
   height: number = 227,
-  color: string = "#05F",
+  color: string = '#05F',
   timeFormat: Array<string>
 ) => {
   const scalarx = width / 2 + scalarX * 5;
@@ -94,10 +94,12 @@ export const drawNumbers = (
   const translation = (radiusCenter * width) / 2;
   context.save();
   context.translate(scalarx, scalary);
-  context.font =  `${bold ? '900' : ''} ${italic ? 'Italic' : ''} ${font}px arial`;
-  context.textBaseline = "middle";
+  context.font = `${bold ? '900' : ''} ${
+    italic ? 'Italic' : ''
+  } ${font}px arial`;
+  context.textBaseline = 'middle';
   context.fillStyle = color;
-  context.textAlign = "center";
+  context.textAlign = 'center';
   const ang = [
     0.5235987755982988, 1.0471975511965976, 1.5707963267948966,
     2.0943951023931953, 2.6179938779914944, 3.141592653589793,
@@ -124,16 +126,16 @@ export const drawSeconds = (
 ) => {
   let ang;
   const distanceFromCenter = 0.9;
-  context.font = radius * 0.1 + "px arial";
-  context.textBaseline = "middle";
-  context.textAlign = "center";
+  context.font = radius * 0.1 + 'px arial';
+  context.textBaseline = 'middle';
+  context.textAlign = 'center';
   for (let num = 1; num < 61; num++) {
     if (num % (6 - 1) !== 0) {
       ang = (num * Math.PI) / 30;
       context.rotate(ang);
       context.translate(0, -radius * distanceFromCenter);
       context.rotate(-ang);
-      context.fillText(".", 0, 0);
+      context.fillText('.', 0, 0);
       context.rotate(ang);
       context.translate(0, radius * distanceFromCenter);
       context.rotate(-ang);
@@ -146,9 +148,9 @@ export const drawGradient = (
   width: number = 300,
   height: number = 300,
   values: Array<{ step: number; color: string }> = [
-    { step: 0, color: "#0D9" },
-    { step: 0.5, color: "#A00" },
-    { step: 1, color: "#006" },
+    { step: 0, color: '#0D9' },
+    { step: 0.5, color: '#A00' },
+    { step: 1, color: '#006' },
   ]
 ) => {
   // Create gradient
@@ -161,7 +163,7 @@ export const drawGradient = (
 
 export const drawCircle = (
   context: CanvasRenderingContext2D,
-  color: string = "#92F070",
+  color: string = '#92F070',
   x: number = 150,
   y: number = 150,
   r: number = 150

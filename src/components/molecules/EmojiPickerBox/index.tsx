@@ -1,11 +1,8 @@
-import React, { useState, useEffect } from "react";
-import Input from "../../atoms/Input";
-import EmojiPicker, {
-  EmojiClickData,
-  Emoji,
-} from "emoji-picker-react";
-import ImageButton from "../../atoms/ImageButton";
-import "./emoji-picker.css";
+import React, { useState, useEffect } from 'react';
+import Input from '../../atoms/Input';
+import EmojiPicker, { EmojiClickData, Emoji } from 'emoji-picker-react';
+import ImageButton from '../../atoms/ImageButton';
+import './emoji-picker.css';
 
 type EmojiPickerBoxProps = {
   title: string;
@@ -19,7 +16,7 @@ const EmojiPickerBox = ({
   title,
   id,
   onChangeEmoji,
-  defaultValue = "#000000",
+  defaultValue = '#000000',
   ...rest
 }: EmojiPickerBoxProps) => {
   const [value, setValue] = useState<string>(defaultValue);
@@ -59,7 +56,7 @@ const EmojiPickerBox = ({
           onClick={onTogglePicker}
         />
       </div>
-      <div className={show ? "" : "hidden"}>
+      <div className={show ? '' : 'hidden'}>
         <EmojiPicker onEmojiClick={onSelectEmoji} height="27em" width="100%" />
       </div>
     </div>

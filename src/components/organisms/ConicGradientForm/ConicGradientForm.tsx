@@ -1,13 +1,18 @@
-import React, { useState, useEffect } from "react";
-import ColorBox from "../../molecules/ColorBox";
-import InputRange from "../../atoms/InputRange/InputRange";
+import React, { useState, useEffect } from 'react';
+import ColorBox from '../../molecules/ColorBox';
+import InputRange from '../../atoms/InputRange/InputRange';
 
 type ConicGradientFormProps = {
   initialShine: number;
   initialX: number;
   initialY: number;
-  initialColors: Array<ColorObj>
-  onChangeForm: (shine: number, x: number, y: number, colors: Array<ColorObj>) => void;
+  initialColors: Array<ColorObj>;
+  onChangeForm: (
+    shine: number,
+    x: number,
+    y: number,
+    colors: Array<ColorObj>
+  ) => void;
 };
 type ColorObj = {
   step: number;
@@ -19,7 +24,7 @@ const ConicGradientForm = ({
   initialX,
   initialY,
   initialColors,
-  onChangeForm
+  onChangeForm,
 }: ConicGradientFormProps) => {
   const [shine, setShine] = useState<number>(initialShine);
   const [xOffset, setXOffset] = useState<number>(initialX);
@@ -31,9 +36,10 @@ const ConicGradientForm = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [colorList, xOffset, yOffset, shine]);
 
-  const onChangeRange = (fn: Function) => (e: React.ChangeEvent<HTMLInputElement>) => {
-    fn(parseInt(e.target.value));
-  };
+  const onChangeRange =
+    (fn: Function) => (e: React.ChangeEvent<HTMLInputElement>) => {
+      fn(parseInt(e.target.value));
+    };
 
   const onChangeColors = (e: React.ChangeEvent<HTMLInputElement>) => {
     const limit = parseInt(e.target.value);
@@ -41,7 +47,7 @@ const ConicGradientForm = ({
     for (let i = 0; i < limit; i++) {
       newList[i] = {
         step: i / (limit - 1),
-        color: !!colorList[i] ? colorList[i].color : "#000000",
+        color: !!colorList[i] ? colorList[i].color : '#000000',
       };
     }
     setColorList(newList);

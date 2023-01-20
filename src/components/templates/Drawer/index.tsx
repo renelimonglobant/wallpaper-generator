@@ -1,7 +1,7 @@
-import { useState } from "react";
-import "./drawer.css";
-import Close from "../../../assets/Close";
-import Burger from "../../../assets/Burger";
+import { useState } from 'react';
+import './drawer.css';
+import Close from '../../../assets/Close';
+import Burger from '../../../assets/Burger';
 
 type DrawerProps = {
   src: Array<{
@@ -11,8 +11,8 @@ type DrawerProps = {
   }>;
 };
 const Drawer = ({ src }: DrawerProps) => {
-  const getStyled = () => (open ? "open" : "closed");
-  const getOverlayStyled = () => (open ? "darken" : "");
+  const getStyled = () => (open ? 'open' : 'closed');
+  const getOverlayStyled = () => (open ? 'darken' : '');
 
   const [open, setOpen] = useState(false);
   return (
@@ -22,19 +22,19 @@ const Drawer = ({ src }: DrawerProps) => {
       </button>
       <div
         onClick={() => setOpen(false)}
-        className={`${"overlay"} ${getOverlayStyled()}`}
+        className={`${'overlay'} ${getOverlayStyled()}`}
       ></div>
-      <aside className={"aside"}>
+      <aside className={'aside'}>
         <div className={getStyled()}>
-          <div className={"closeContainer"}>
+          <div className={'closeContainer'}>
             <button className="closeBtn" onClick={() => setOpen(false)}>
               <Close />
             </button>
           </div>
           <nav>
-            <ul>
+            <ul className="list">
               {src.map((i) => (
-                <li>
+                <li key={i.title}>
                   <a
                     key={i.title}
                     href={i.link}

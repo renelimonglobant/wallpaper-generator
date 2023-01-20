@@ -1,11 +1,11 @@
-.select{
-    padding: 10px 15px;
-    width: 100%;
-    margin-bottom: 20px;
+.select {
+  padding: 10px 15px;
+  width: 100%;
+  margin-bottom: 20px;
 }
-.select-label{
-    font-size: 15px;
-    display: block;
-    text-align: left;
-    margin-bottom: 3px;
+.select-label {
+  font-size: 15px;
+  display: block;
+  text-align: left;
+  margin-bottom: 3px;
 }

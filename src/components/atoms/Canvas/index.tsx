@@ -1,5 +1,5 @@
-import { forwardRef } from "react";
-import "./canvas.css";
+import { forwardRef } from 'react';
+import './canvas.css';
 
 type CanvasProps = {
   width: number;
@@ -16,7 +16,7 @@ const Canvas = forwardRef<HTMLCanvasElement, CanvasProps>(
         id={`render-${id}`}
         width={width}
         height={height}
-        className={hidden ? 'hidden': ''}
+        className={hidden ? 'hidden' : ''}
       ></canvas>
     );
   }

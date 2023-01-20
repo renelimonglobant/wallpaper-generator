@@ -1,4 +1,4 @@
-import "./imageButton.css";
+import './imageButton.css';
 
 type ImageButtonProps = {
   imgsrc?: string;

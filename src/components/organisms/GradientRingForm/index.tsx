@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import CheckBox from "../../atoms/CheckBox";
-import ColorBox from "../../molecules/ColorBox";
-import InputRange from "../../atoms/InputRange/InputRange";
+import React, { useState, useEffect } from 'react';
+import CheckBox from '../../atoms/CheckBox';
+import ColorBox from '../../molecules/ColorBox';
+import InputRange from '../../atoms/InputRange/InputRange';
 
 type ConicGradientFormProps = {
   initialShine: number;
@@ -75,7 +75,7 @@ const ConicGradientForm = ({
     for (let i = 0; i < limit; i++) {
       newList[i] = {
         step: i / (limit - 1),
-        color: !!colorList[i] ? colorList[i].color : "#000000",
+        color: !!colorList[i] ? colorList[i].color : '#000000',
       };
     }
     setColorList(newList);

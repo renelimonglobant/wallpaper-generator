@@ -1,5 +1,5 @@
-import { useState } from "react";
-import "./select.css";
+import { useState } from 'react';
+import './select.css';
 
 type SelectProps = {
   id: string;
@@ -14,7 +14,7 @@ const Select = ({
   id,
   defaultValue,
   options,
-  label,  
+  label,
   setValue,
   ...rest
 }: SelectProps) => {
@@ -27,7 +27,9 @@ const Select = ({
   };
   return (
     <>
-      <label className="select-label" htmlFor={`select-${id}`}>{label}</label>
+      <label className="select-label" htmlFor={`select-${id}`}>
+        {label}
+      </label>
       <select
         className="select"
         id={`select-${id}`}
