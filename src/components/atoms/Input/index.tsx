@@ -1,16 +1,16 @@
 import './input.css';
-type InputProps = {
-  text: string;
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   id: string;
+  label: string;
   type?: string;
-  [rest: string]: any;
-};
+  // [rest: string]: any;
+}
 
-const Input = ({ text, id, type = 'text', ...rest }: InputProps) => {
+const Input = ({ label, id, type = 'text', ...rest }: InputProps) => {
   return (
     <>
       <label className="label-input" htmlFor={id}>
-        {text}
+        {label}
       </label>
       <input className="input-text" type={type} id={id} name={id} {...rest} />
     </>

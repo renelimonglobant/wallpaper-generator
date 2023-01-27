@@ -44,7 +44,7 @@ const EmojiPickerBox = ({
       <div className="box">
         <div>
           <Input
-            text="Add comma separated emojis/text"
+            label="Add comma separated emojis/text"
             id={`emoji-${id}`}
             onChange={onChangeCurrentValue}
             value={value}

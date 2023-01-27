@@ -47,7 +47,7 @@ const ColorBox = ({
   return (
     <div className="color-box">
       <InputColorPicker
-        text={inputText}
+        label={inputText}
         id={`range-${id}`}
         value={color}
         onChange={onChangeCurrentColor}

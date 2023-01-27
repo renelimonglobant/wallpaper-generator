@@ -1,10 +1,9 @@
 import './button.css';
 
-type ButtonProps = {
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   id: string;
   text: string;
-  [rest: string]: any;
-};
+}
 
 const Button = ({ id, text, ...rest }: ButtonProps) => {
   return (

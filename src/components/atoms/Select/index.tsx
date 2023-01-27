@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import './select.css';
 
-type SelectProps = {
+interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
   id: string;
   defaultValue: string;
   label?: string;
   options: Array<{ value: string; label: string }>;
   setValue: (value: string) => void;
   [rest: string]: any;
-};
+}
 
 const Select = ({
   id,

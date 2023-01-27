@@ -1,15 +1,15 @@
 import { forwardRef } from 'react';
 import './canvas.css';
 
-type CanvasProps = {
+interface CanvasProps extends React.CanvasHTMLAttributes<HTMLCanvasElement> {
   width: number;
   height: number;
   id: string;
   hidden?: boolean;
-};
+}
 
 const Canvas = forwardRef<HTMLCanvasElement, CanvasProps>(
-  ({ width, height, id, hidden = false }, ref) => {
+  ({ width, height, id, hidden = false, ...rest }, ref) => {
     return (
       <canvas
         ref={ref}
@@ -17,6 +17,7 @@ const Canvas = forwardRef<HTMLCanvasElement, CanvasProps>(
         width={width}
         height={height}
         className={hidden ? 'hidden' : ''}
+        {...rest}
       ></canvas>
     );
   }

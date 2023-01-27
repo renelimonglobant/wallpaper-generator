@@ -166,7 +166,7 @@ const HoursForm = ({
         />
       </div>
       <InputRange
-        text={`Radius: ${radius}`}
+        label={`Radius: ${radius}`}
         id="radius"
         min={1}
         max={100}
@@ -176,7 +176,7 @@ const HoursForm = ({
         disabled={!isEnabled}
       />
       <InputRange
-        text={`X offset: ${scalarX}`}
+        label={`X offset: ${scalarX}`}
         id="x-scalar"
         min={-10}
         max={10}
@@ -186,7 +186,7 @@ const HoursForm = ({
         disabled={!isEnabled}
       />
       <InputRange
-        text={`Y offset: ${scalarY}`}
+        label={`Y offset: ${scalarY}`}
         id="y-scalar"
         min={-10}
         max={10}
@@ -196,7 +196,7 @@ const HoursForm = ({
         disabled={!isEnabled}
       />
       <InputRange
-        text={`Font size: ${fontSize}`}
+        label={`Font size: ${fontSize}`}
         id="y-offset"
         min={1}
         max={30}

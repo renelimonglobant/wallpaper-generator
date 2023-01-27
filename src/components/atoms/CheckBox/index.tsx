@@ -1,11 +1,10 @@
 import './checkbox.css';
 
-type CheckBoxProps = {
+interface CheckBoxProps extends React.InputHTMLAttributes<HTMLInputElement> {
   id: string;
   checked: boolean;
   label: string;
-  [rest: string]: any;
-};
+}
 
 const CheckBox = ({ id, label, checked, ...rest }: CheckBoxProps) => {
   return (

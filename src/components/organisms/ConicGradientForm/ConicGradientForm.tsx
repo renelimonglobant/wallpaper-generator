@@ -74,7 +74,7 @@ const ConicGradientForm = ({
   return (
     <div>
       <InputRange
-        text={`Shine position: ${shine}`}
+        label={`Shine position: ${shine}`}
         id="shine"
         min={0}
         max={60}
@@ -84,7 +84,7 @@ const ConicGradientForm = ({
         onChange={onChangeRange(setShine)}
       />
       <InputRange
-        text={`Horizontal position: ${xOffset}`}
+        label={`Horizontal position: ${xOffset}`}
         id="x-offset"
         min={-10}
         max={10}
@@ -93,7 +93,7 @@ const ConicGradientForm = ({
         onChange={onChangeRange(setXOffset)}
       />
       <InputRange
-        text={`Vertical position: ${yOffset}`}
+        label={`Vertical position: ${yOffset}`}
         id="y-offset"
         min={-10}
         max={10}
@@ -102,7 +102,7 @@ const ConicGradientForm = ({
         onChange={onChangeRange(setYOffset)}
       />
       <InputRange
-        text={`Number of colors: ${colorList.length}`}
+        label={`Number of colors: ${colorList.length}`}
         id="range"
         min={2}
         max={8}

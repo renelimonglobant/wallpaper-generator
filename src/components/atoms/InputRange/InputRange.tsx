@@ -1,15 +1,15 @@
 import React from 'react';
 import './inputRange.css';
-type InputRangeProps = {
-  text: string;
+interface InputRangeProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  label: string;
   id: string;
   min?: number;
   max?: number;
   [rest: string]: any;
-};
+}
 
 const InputRange = ({
-  text,
+  label,
   id,
   min = 0,
   max = 5,
@@ -18,7 +18,7 @@ const InputRange = ({
   return (
     <div className="range-box">
       <label className="label-range" htmlFor={id}>
-        {text}
+        {label}
       </label>
       <input
         className="input-range"

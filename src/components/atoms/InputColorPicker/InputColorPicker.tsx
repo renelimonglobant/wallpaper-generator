@@ -1,15 +1,16 @@
 import './inputcolorpicker.css';
-type InputColorPickerProps = {
-  text: string;
+interface InputColorPickerProps
+  extends React.InputHTMLAttributes<HTMLInputElement> {
+  label: string;
   id: string;
   [rest: string]: any;
-};
+}
 
-const InputColorPicker = ({ text, id, ...rest }: InputColorPickerProps) => {
+const InputColorPicker = ({ label, id, ...rest }: InputColorPickerProps) => {
   return (
     <>
       <label className="label-picker" htmlFor={id}>
-        {text}
+        {label}
       </label>
       <input
         className="input-picker"
