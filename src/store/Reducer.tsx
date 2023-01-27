@@ -58,6 +58,13 @@ export const reducer = (state: State, action: action) => {
           italic: action.value.italic,
         },
       };
+    case 'save-whole-state':
+      return {
+        ...state,
+        conicGradient: action.value.storageState.conicGradient,
+        gradientRing: action.value.storageState.gradientRing,
+        hours: action.value.storageState.hours,
+      };
     case 'reset':
       return InitialState;
     default:

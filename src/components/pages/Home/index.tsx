@@ -18,6 +18,11 @@ import { reducer } from '../../../store/Reducer';
 import { Resolutions } from '../../../store/Resolutions';
 import Select from '../../atoms/Select';
 
+const getJSDocTemplateTag = () => {
+  return localStorage.getItem('state')
+    ? JSON.parse(localStorage.getItem('state') as string)
+    : InitialState;
+};
 function App() {
   const canvas = useRef<HTMLCanvasElement>(null);
   const [context, setContext] = useState<CanvasRenderingContext2D | null>(null);
@@ -30,7 +35,15 @@ function App() {
   const hoursCanvas = useRef<HTMLCanvasElement>(null);
   const [contextHours, setContextHours] =
     useState<CanvasRenderingContext2D | null>(null);
-  const [transformations, dispatch] = useReducer(reducer, InitialState);
+  const [transformations, dispatch] = useReducer(
+    reducer,
+    getJSDocTemplateTag()
+  );
+
+  useEffect(() => {
+    const storageState = JSON.stringify(transformations);
+    localStorage.setItem('state', storageState);
+  }, [transformations]);
 
   useEffect(() => {
     const c = canvas.current as HTMLCanvasElement | null;
@@ -229,7 +242,7 @@ function App() {
       <Header />
       <main className="container">
         <div className="grid">
-          <section className="scroll">
+          <section className="scroll center">
             <Canvas
               ref={canvas}
               id="screen"
