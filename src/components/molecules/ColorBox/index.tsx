@@ -5,14 +5,14 @@ import InputColorPicker from '../../atoms/InputColorPicker';
 import Paste from '../../../assets/Paste';
 import './colorbox.css';
 
-type ColorBoxProps = {
+interface ColorBoxProps extends React.InputHTMLAttributes<HTMLInputElement> {
   inputText: string;
   defaultColor: string;
   id: string;
   disabled?: boolean;
   onChangeColor: (params: string) => void;
-  [rest: string]: any;
-};
+  // [rest: string]: any;
+}
 
 const ColorBox = ({
   inputText,

@@ -3,7 +3,6 @@ interface InputColorPickerProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
   label: string;
   id: string;
-  [rest: string]: any;
 }
 
 const InputColorPicker = ({ label, id, ...rest }: InputColorPickerProps) => {
