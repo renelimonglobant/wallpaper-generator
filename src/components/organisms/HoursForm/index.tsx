@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ColorBox from '../../molecules/ColorBox';
 import './hours-form.css';
-import InputRange from '../../atoms/InputRange/InputRange';
+import InputRange from '../../atoms/InputRange';
 import Select from '../../atoms/Select';
 import EmojiPickerBox from '../../molecules/EmojiPickerBox';
 import CheckBox from '../../atoms/CheckBox';

@@ -1,10 +1,11 @@
+import { ColorsArray } from '../types';
 import 'create-conical-gradient';
 
 export const drawConicalGradient = (
   context: CanvasRenderingContext2D,
   width: number = 300,
   height: number = 300,
-  values: Array<{ step: number; color: string }> = [
+  values: ColorsArray = [
     { step: 0, color: '#F00' },
     { step: 0.2, color: '#00F' },
     { step: 0.4, color: '#0FF' },
@@ -32,7 +33,7 @@ export const drawConicalGradient = (
 
 export const drawGradientCircle = (
   context: CanvasRenderingContext2D,
-  values: Array<{ step: number; color: string }> = [
+  values: ColorsArray = [
     { step: 0, color: '#F00' },
     { step: 0.2, color: '#00F' },
     { step: 0.4, color: '#0FF' },
@@ -147,7 +148,7 @@ export const drawGradient = (
   context: CanvasRenderingContext2D,
   width: number = 300,
   height: number = 300,
-  values: Array<{ step: number; color: string }> = [
+  values: ColorsArray = [
     { step: 0, color: '#0D9' },
     { step: 0.5, color: '#A00' },
     { step: 1, color: '#006' },

@@ -3,7 +3,7 @@ import './home.css';
 import Accordion from '../../templates/Accordion';
 import Button from '../../atoms/Button';
 import Canvas from '../../atoms/Canvas';
-import ConicGradientForm from '../../organisms/ConicGradientForm/ConicGradientForm';
+import ConicGradientForm from '../../organisms/ConicGradientForm';
 import {
   drawConicalGradient,
   drawGradientCircle,

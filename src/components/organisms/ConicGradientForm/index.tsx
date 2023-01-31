@@ -1,22 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import ColorBox from '../../molecules/ColorBox';
-import InputRange from '../../atoms/InputRange/InputRange';
+import InputRange from '../../atoms/InputRange';
+import { Color, ColorsArray } from '../../../types';
 
 type ConicGradientFormProps = {
   initialShine: number;
   initialX: number;
   initialY: number;
-  initialColors: Array<ColorObj>;
+  initialColors: ColorsArray;
   onChangeForm: (
     shine: number,
     x: number,
     y: number,
-    colors: Array<ColorObj>
+    colors: ColorsArray
   ) => void;
-};
-type ColorObj = {
-  step: number;
-  color: string;
 };
 
 const ConicGradientForm = ({
@@ -29,7 +26,7 @@ const ConicGradientForm = ({
   const [shine, setShine] = useState<number>(initialShine);
   const [xOffset, setXOffset] = useState<number>(initialX);
   const [yOffset, setYOffset] = useState<number>(initialY);
-  const [colorList, setColorList] = useState<ColorObj[]>(initialColors);
+  const [colorList, setColorList] = useState<ColorsArray>(initialColors);
 
   useEffect(() => {
     onChangeForm(shine, xOffset, yOffset, colorList);
@@ -53,22 +50,22 @@ const ConicGradientForm = ({
     setColorList(newList);
   };
 
-  const onChangeColor = (inputcolor: string, stepColor: number) => {
-    setColorList((prevList: Array<ColorObj>) => {
-      return prevList.reduce(
+  const onChangeColor = (color: string, step: number) => {
+    setColorList((prevList: Array<Color>) =>
+      prevList.reduce(
         (acc, item) =>
-          item.step === stepColor
+          item.step === step
             ? [
                 ...acc,
                 {
-                  step: stepColor,
-                  color: inputcolor,
+                  step,
+                  color,
                 },
               ]
             : [...acc, item],
-        [] as ColorObj[]
-      );
-    });
+        [] as Color[]
+      )
+    );
   };
 
   return (
@@ -111,7 +108,7 @@ const ConicGradientForm = ({
         onChange={onChangeColors}
       />
       {colorList &&
-        colorList.map((inputcolor, i) => (
+        colorList.map((inputcolor: Color, i: number) => (
           <React.Fragment key={i}>
             <ColorBox
               inputText={inputcolor.color}

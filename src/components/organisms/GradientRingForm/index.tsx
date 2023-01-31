@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import CheckBox from '../../atoms/CheckBox';
 import ColorBox from '../../molecules/ColorBox';
-import InputRange from '../../atoms/InputRange/InputRange';
+import InputRange from '../../atoms/InputRange';
+import { Color, ColorsArray } from '../../../types';
 
 type ConicGradientFormProps = {
   initialShine: number;
@@ -9,7 +10,7 @@ type ConicGradientFormProps = {
   initialX: number;
   initialY: number;
   initialRadius: number;
-  initialColors: Array<ColorObj>;
+  initialColors: ColorsArray;
   enabled: boolean;
   onChangeForm: (
     enabled: boolean,
@@ -18,12 +19,8 @@ type ConicGradientFormProps = {
     y: number,
     r: number,
     strokeWidth: number,
-    colors: Array<ColorObj>
+    colors: ColorsArray
   ) => void;
-};
-type ColorObj = {
-  step: number;
-  color: string;
 };
 
 const ConicGradientForm = ({
@@ -41,7 +38,7 @@ const ConicGradientForm = ({
   const [yOffset, setYOffset] = useState<number>(initialY);
   const [radius, setRadius] = useState<number>(initialRadius);
   const [stroke, setStroke] = useState<number>(initialStroke);
-  const [colorList, setColorList] = useState<ColorObj[]>(initialColors);
+  const [colorList, setColorList] = useState<ColorsArray>(initialColors);
   const [isEnabled, setIsEnabled] = useState<boolean>(enabled);
 
   useEffect(() => {
@@ -81,22 +78,22 @@ const ConicGradientForm = ({
     setColorList(newList);
   };
 
-  const onChangeColor = (inputcolor: string, stepColor: number) => {
-    setColorList((prevList: Array<ColorObj>) => {
-      return prevList.reduce(
+  const onChangeColor = (color: string, step: number) => {
+    setColorList((prevList: Array<Color>) =>
+      prevList.reduce(
         (acc, item) =>
-          item.step === stepColor
+          item.step === step
             ? [
                 ...acc,
                 {
-                  step: stepColor,
-                  color: inputcolor,
+                  step,
+                  color,
                 },
               ]
             : [...acc, item],
-        [] as ColorObj[]
-      );
-    });
+        [] as Color[]
+      )
+    );
   };
 
   return (
@@ -170,7 +167,7 @@ const ConicGradientForm = ({
         disabled={!isEnabled}
       />
       {colorList &&
-        colorList.map((inputcolor, i) => (
+        colorList.map((inputcolor: Color, i: number) => (
           <React.Fragment key={i}>
             <ColorBox
               inputText={inputcolor.color}

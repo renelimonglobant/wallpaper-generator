@@ -1,15 +1,17 @@
+import { ColorsArray } from '../types';
+
 export type State = {
   height: number;
   width: number;
   conicGradient: {
-    colorList: Array<{ step: number; color: string }>;
+    colorList: ColorsArray;
     xOffset: number;
     yOffset: number;
     shine: number;
   };
   gradientRing: {
     enabled: boolean;
-    colorList: Array<{ step: number; color: string }>;
+    colorList: ColorsArray;
     scaleX: number;
     scaleY: number;
     x: number;

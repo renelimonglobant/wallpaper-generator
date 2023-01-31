@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Copy from '../../../assets/Copy';
 import ImageButton from '../../atoms/ImageButton';
-import InputColorPicker from '../../atoms/InputColorPicker/InputColorPicker';
+import InputColorPicker from '../../atoms/InputColorPicker';
 import Paste from '../../../assets/Paste';
 import './colorbox.css';
 
