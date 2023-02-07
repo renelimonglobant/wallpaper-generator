@@ -6,7 +6,12 @@ interface CheckBoxProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label: string;
 }
 
-const CheckBox = ({ id, label, checked, ...rest }: CheckBoxProps) => {
+const CheckBox: React.FunctionComponent<CheckBoxProps> = ({
+  id,
+  label,
+  checked,
+  ...rest
+}: CheckBoxProps) => {
   return (
     <label className="checkbox-label">
       <input

@@ -5,7 +5,11 @@ interface InputColorPickerProps
   id: string;
 }
 
-const InputColorPicker = ({ label, id, ...rest }: InputColorPickerProps) => {
+const InputColorPicker: React.FunctionComponent<InputColorPickerProps> = ({
+  label,
+  id,
+  ...rest
+}: InputColorPickerProps) => {
   return (
     <>
       <label className="label-picker" htmlFor={id}>

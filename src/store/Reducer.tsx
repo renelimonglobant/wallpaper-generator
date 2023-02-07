@@ -1,11 +1,12 @@
-import { InitialState, State } from './InitialState';
+import { InitialState, type State } from './InitialState';
 
-type action = {
+interface action {
   type: string;
+  // value: typeof State;
   value: any;
-};
+}
 
-export const reducer = (state: State, action: action) => {
+export const reducer = (state: State, action: action): any => {
   switch (action.type) {
     case 'resize-canvas':
       return {

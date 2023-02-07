@@ -8,19 +8,20 @@ interface CanvasProps extends React.CanvasHTMLAttributes<HTMLCanvasElement> {
   hidden?: boolean;
 }
 
-const Canvas = forwardRef<HTMLCanvasElement, CanvasProps>(
-  ({ width, height, id, hidden = false, ...rest }, ref) => {
-    return (
-      <canvas
-        ref={ref}
-        id={`render-${id}`}
-        width={width}
-        height={height}
-        className={hidden ? 'hidden' : ''}
-        {...rest}
-      ></canvas>
-    );
-  }
-);
+const Canvas = forwardRef<HTMLCanvasElement, CanvasProps>(function Canvas(
+  { width, height, id, hidden = false, ...rest }: CanvasProps,
+  ref
+) {
+  return (
+    <canvas
+      ref={ref}
+      id={`render-${id}`}
+      width={width}
+      height={height}
+      className={hidden ? 'hidden' : ''}
+      {...rest}
+    ></canvas>
+  );
+});
 
 export default Canvas;

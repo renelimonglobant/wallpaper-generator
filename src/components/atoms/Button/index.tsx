@@ -5,7 +5,11 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   text: string;
 }
 
-const Button = ({ id, text, ...rest }: ButtonProps) => {
+const Button: React.FunctionComponent<ButtonProps> = ({
+  id,
+  text,
+  ...rest
+}: ButtonProps) => {
   return (
     <div>
       <button className="btn" id={`btn-${id}`} {...rest}>

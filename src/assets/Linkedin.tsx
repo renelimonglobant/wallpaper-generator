@@ -1,7 +1,6 @@
-type LinkedinProps = {
-  [rest: string]: any;
-};
-const Linkedin = ({ ...rest }: LinkedinProps) => {
+import type { SVGProps } from 'react';
+type TSVGElementProps = SVGProps<SVGSVGElement>;
+const Linkedin: React.FunctionComponent<TSVGElementProps> = ({ ...rest }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

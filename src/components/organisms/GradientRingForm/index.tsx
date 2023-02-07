@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import CheckBox from '../../atoms/CheckBox';
 import ColorBox from '../../molecules/ColorBox';
 import InputRange from '../../atoms/InputRange';
-import { Color, ColorsArray } from '../../../types';
+import { type Color, type ColorsArray } from '../../../types';
 
-type ConicGradientFormProps = {
+interface ConicGradientFormProps {
   initialShine: number;
   initialStroke: number;
   initialX: number;
@@ -21,9 +21,9 @@ type ConicGradientFormProps = {
     strokeWidth: number,
     colors: ColorsArray
   ) => void;
-};
+}
 
-const ConicGradientForm = ({
+const ConicGradientForm: React.FunctionComponent<ConicGradientFormProps> = ({
   initialShine,
   initialX,
   initialY,
@@ -32,7 +32,7 @@ const ConicGradientForm = ({
   initialColors,
   enabled,
   onChangeForm,
-}: ConicGradientFormProps) => {
+}) => {
   const [shine, setShine] = useState<number>(initialShine);
   const [xOffset, setXOffset] = useState<number>(initialX);
   const [yOffset, setYOffset] = useState<number>(initialY);
@@ -46,41 +46,41 @@ const ConicGradientForm = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isEnabled, colorList, xOffset, yOffset, shine, radius, stroke]);
 
-  const onChangeShine = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onChangeShine = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setShine(parseInt(e.target.value));
   };
 
-  const onChangeXOffset = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onChangeXOffset = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setXOffset(parseInt(e.target.value));
   };
 
-  const onChangeYOffset = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onChangeYOffset = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setYOffset(parseInt(e.target.value));
   };
 
-  const onChangeRadius = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onChangeRadius = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setRadius(parseInt(e.target.value));
   };
 
-  const onChangeStroke = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onChangeStroke = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setStroke(parseInt(e.target.value));
   };
 
-  const onChangeRange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onChangeRange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const limit = parseInt(e.target.value);
     const newList = [];
     for (let i = 0; i < limit; i++) {
       newList[i] = {
         step: i / (limit - 1),
-        color: !!colorList[i] ? colorList[i].color : '#000000',
+        color: colorList[i] !== undefined ? colorList[i].color : '#000000',
       };
     }
     setColorList(newList);
   };
 
-  const onChangeColor = (color: string, step: number) => {
-    setColorList((prevList: Array<Color>) =>
-      prevList.reduce(
+  const onChangeColor = (color: string, step: number): void => {
+    setColorList((prevList: Color[]) =>
+      prevList.reduce<Color[]>(
         (acc, item) =>
           item.step === step
             ? [
@@ -91,7 +91,7 @@ const ConicGradientForm = ({
                 },
               ]
             : [...acc, item],
-        [] as Color[]
+        []
       )
     );
   };
@@ -103,7 +103,9 @@ const ConicGradientForm = ({
           id="show-hours"
           label="Show ring"
           checked={isEnabled}
-          onChange={() => setIsEnabled(!isEnabled)}
+          onChange={() => {
+            setIsEnabled(!isEnabled);
+          }}
         />
       </div>
       <InputRange
@@ -166,20 +168,19 @@ const ConicGradientForm = ({
         onChange={onChangeRange}
         disabled={!isEnabled}
       />
-      {colorList &&
-        colorList.map((inputcolor: Color, i: number) => (
-          <React.Fragment key={i}>
-            <ColorBox
-              inputText={inputcolor.color}
-              id={`range-${inputcolor.step}`}
-              onChangeColor={(color) => {
-                onChangeColor(color, inputcolor.step);
-              }}
-              defaultColor={inputcolor.color}
-              disabled={!isEnabled}
-            />
-          </React.Fragment>
-        ))}
+      {colorList.map((inputcolor: Color, i: number) => (
+        <React.Fragment key={i}>
+          <ColorBox
+            inputText={inputcolor.color}
+            id={`range-${inputcolor.step}`}
+            onChangeColor={(color) => {
+              onChangeColor(color, inputcolor.step);
+            }}
+            defaultColor={inputcolor.color}
+            disabled={!isEnabled}
+          />
+        </React.Fragment>
+      ))}
     </div>
   );
 };

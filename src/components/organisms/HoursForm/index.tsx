@@ -6,7 +6,7 @@ import Select from '../../atoms/Select';
 import EmojiPickerBox from '../../molecules/EmojiPickerBox';
 import CheckBox from '../../atoms/CheckBox';
 
-type HoursFormProps = {
+interface HoursFormProps {
   initialRadius: number;
   initialX: number;
   initialY: number;
@@ -15,7 +15,7 @@ type HoursFormProps = {
   italic: boolean;
   enabled: boolean;
   initialColor: string;
-  initialTimeFormat: Array<string>;
+  initialTimeFormat: string[];
   onChangeForm: (
     enabled: boolean,
     radius: number,
@@ -25,11 +25,11 @@ type HoursFormProps = {
     bold: boolean,
     italic: boolean,
     color: string,
-    timeFormat: Array<string>
+    timeFormat: string[]
   ) => void;
-};
+}
 
-const HoursForm = ({
+const HoursForm: React.FunctionComponent<HoursFormProps> = ({
   initialRadius,
   initialX,
   initialY,
@@ -40,7 +40,7 @@ const HoursForm = ({
   initialColor,
   initialTimeFormat,
   onChangeForm,
-}: HoursFormProps) => {
+}) => {
   const [radius, setRadius] = useState<number>(initialRadius);
   const [scalarX, setScalarX] = useState<number>(initialX);
   const [scalarY, setScalarY] = useState<number>(initialY);
@@ -98,23 +98,23 @@ const HoursForm = ({
   ]);
 
   const onChangeRange =
-    (fn: Function) => (e: React.ChangeEvent<HTMLInputElement>) => {
+    (fn: (n: number) => void) => (e: React.ChangeEvent<HTMLInputElement>) => {
       fn(parseInt(e.target.value));
       setHasChanged(true);
     };
 
-  const onChangeColor = (inputcolor: string, _stepColor: number) => {
+  const onChangeColor = (inputcolor: string, _stepColor: number): void => {
     setColor(inputcolor);
     setHasChanged(true);
   };
 
-  const onChangeTimeFormat = (value: string) => {
-    let index = value as keyof typeof timeFormats;
+  const onChangeTimeFormat = (value: string): void => {
+    const index = value as keyof typeof timeFormats;
     setTimeFormat(timeFormats[index]);
     setCustomFormat(value === 'custom');
     setHasChanged(true);
   };
-  const onChangeCustomTimeFormat = (e: string) => {
+  const onChangeCustomTimeFormat = (e: string): void => {
     setTimeFormat([...e.split(','), ...timeFormats.custom]);
   };
 
@@ -125,7 +125,9 @@ const HoursForm = ({
           id="show-hours"
           label="Show hours"
           checked={isEnabled}
-          onChange={() => setIsEnabled(!isEnabled)}
+          onChange={() => {
+            setIsEnabled(!isEnabled);
+          }}
         />
       </div>
       <Select
@@ -144,7 +146,7 @@ const HoursForm = ({
           title="Choose your emoji"
           defaultValue=""
           id="custom-text"
-          maxLength="50"
+          maxLength={50}
           onChangeEmoji={onChangeCustomTimeFormat}
           disabled={!isEnabled}
         />
@@ -154,14 +156,18 @@ const HoursForm = ({
           id="bold"
           label="Bold"
           checked={isBold}
-          onChange={() => setIsBold(!isBold)}
+          onChange={() => {
+            setIsBold(!isBold);
+          }}
           disabled={!isEnabled}
         />
         <CheckBox
           id="italic"
           label="Italic"
           checked={isItalic}
-          onChange={() => setIsItalic(!isItalic)}
+          onChange={() => {
+            setIsItalic(!isItalic);
+          }}
           disabled={!isEnabled}
         />
       </div>

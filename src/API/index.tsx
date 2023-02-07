@@ -1,10 +1,10 @@
-import { ColorsArray } from '../types';
+import { type ColorsArray } from '../types';
 import 'create-conical-gradient';
 
 export const drawConicalGradient = (
   context: CanvasRenderingContext2D,
-  width: number = 300,
-  height: number = 300,
+  width = 300,
+  height = 300,
   values: ColorsArray = [
     { step: 0, color: '#F00' },
     { step: 0.2, color: '#00F' },
@@ -13,10 +13,10 @@ export const drawConicalGradient = (
     { step: 0.8, color: '#FF0' },
     { step: 1, color: '#F00' },
   ],
-  xOffset: number = 0,
-  yOffset: number = 0,
-  shine: number = 0
-) => {
+  xOffset = 0,
+  yOffset = 0,
+  shine = 0
+): void => {
   const shineScalar = shine / 8.2;
   const xOffsetScalar = xOffset * 5;
   const yOffsetScalar = yOffset * 5;
@@ -26,7 +26,9 @@ export const drawConicalGradient = (
     -Math.PI + shineScalar,
     Math.PI + shineScalar
   );
-  values.forEach((e) => gradient?.addColorStop(e.step, e.color));
+  values.forEach((e) => {
+    gradient?.addColorStop(e.step, e.color);
+  });
   context.fillStyle = gradient.pattern;
   context.fillRect(0, 0, width, height);
 };
@@ -41,14 +43,14 @@ export const drawGradientCircle = (
     { step: 0.8, color: '#FF0' },
     { step: 1, color: '#F00' },
   ],
-  x: number = 150,
-  y: number = 150,
-  r: number = 150,
-  scaleX: number = 300,
-  scaleY: number = 300,
-  shine: number = 0,
-  lineWidth: number = 5
-) => {
+  x = 150,
+  y = 150,
+  r = 150,
+  scaleX = 300,
+  scaleY = 300,
+  shine = 0,
+  lineWidth = 5
+): void => {
   context?.beginPath();
   const shineScalar = shine / 4;
   const xScale = (scaleX + x * 25) / 2;
@@ -61,7 +63,9 @@ export const drawGradientCircle = (
     -Math.PI + shineScalar,
     Math.PI + shineScalar
   );
-  values.forEach((e) => gradient?.addColorStop(e.step, e.color));
+  values.forEach((e) => {
+    gradient?.addColorStop(e.step, e.color);
+  });
   context.strokeStyle = gradient.pattern;
   /*
   context.shadowBlur = 6;
@@ -77,17 +81,17 @@ export const drawGradientCircle = (
 
 export const drawNumbers = (
   context: CanvasRenderingContext2D,
-  radius: number = 0.85,
-  scalarX: number = 227,
-  scalarY: number = 227,
-  fontSize: number = 15,
-  bold: boolean = false,
-  italic: boolean = false,
-  width: number = 227,
-  height: number = 227,
-  color: string = '#05F',
-  timeFormat: Array<string>
-) => {
+  radius = 0.85,
+  scalarX = 227,
+  scalarY = 227,
+  fontSize = 15,
+  bold = false,
+  italic = false,
+  width = 227,
+  height = 227,
+  color = '#05F',
+  timeFormat: string[]
+): void => {
   const scalarx = width / 2 + scalarX * 5;
   const scalary = height / 2 + scalarY * 5;
   const radiusCenter = radius / 100;
@@ -124,10 +128,10 @@ export const drawNumbers = (
 export const drawSeconds = (
   context: CanvasRenderingContext2D,
   radius: number
-) => {
+): void => {
   let ang;
   const distanceFromCenter = 0.9;
-  context.font = radius * 0.1 + 'px arial';
+  context.font = `${radius * 0.1} px arial`;
   context.textBaseline = 'middle';
   context.textAlign = 'center';
   for (let num = 1; num < 61; num++) {
@@ -146,29 +150,32 @@ export const drawSeconds = (
 
 export const drawGradient = (
   context: CanvasRenderingContext2D,
-  width: number = 300,
-  height: number = 300,
+  width = 300,
+  height = 300,
   values: ColorsArray = [
     { step: 0, color: '#0D9' },
     { step: 0.5, color: '#A00' },
     { step: 1, color: '#006' },
   ]
-) => {
+): void => {
   // Create gradient
   const gradient = context?.createRadialGradient(150, 150, 100, 100, 100, 220);
-  values.forEach((e) => gradient?.addColorStop(e.step, e.color));
+  values.forEach((e) => {
+    gradient?.addColorStop(e.step, e.color);
+  });
   // Fill with gradient
-  context && (context.fillStyle = gradient as CanvasGradient);
+  // context && (context.fillStyle = gradient);
+  context.fillStyle = gradient;
   context?.fillRect(0, 0, width, height);
 };
 
 export const drawCircle = (
   context: CanvasRenderingContext2D,
-  color: string = '#92F070',
-  x: number = 150,
-  y: number = 150,
-  r: number = 150
-) => {
+  color = '#92F070',
+  x = 150,
+  y = 150,
+  r = 150
+): void => {
   context?.beginPath();
   context.strokeStyle = color;
   context?.arc(x, y, r, 0, 2 * Math.PI);

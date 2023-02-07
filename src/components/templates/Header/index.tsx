@@ -1,3 +1,4 @@
+import { type FunctionComponent } from 'react';
 import logo from '../../../assets/clock.png';
 import Github from '../../../assets/Github';
 import Twitter from '../../../assets/Twitter';
@@ -22,7 +23,7 @@ const links = [
     icon: <Twitter />,
   },
 ];
-const Footer = () => {
+const Footer: FunctionComponent = () => {
   return (
     <header className="header">
       <div className="head">

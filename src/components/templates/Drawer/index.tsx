@@ -1,33 +1,45 @@
-import { useState } from 'react';
+import { useState, type FunctionComponent } from 'react';
 import './drawer.css';
 import Close from '../../../assets/Close';
 import Burger from '../../../assets/Burger';
 
-type DrawerProps = {
+interface DrawerProps {
   src: Array<{
     title: string;
     link: string;
     icon: React.ReactNode;
   }>;
-};
-const Drawer = ({ src }: DrawerProps) => {
-  const getStyled = () => (open ? 'open' : 'closed');
-  const getOverlayStyled = () => (open ? 'darken' : '');
+}
+const Drawer: FunctionComponent<DrawerProps> = ({ src }) => {
+  const getStyled = (): string => (open ? 'open' : 'closed');
+  const getOverlayStyled = (): string => (open ? 'darken' : '');
 
   const [open, setOpen] = useState(false);
   return (
     <div className="drawer">
-      <button onClick={() => setOpen(true)} className="toggleBtn">
+      <button
+        onClick={() => {
+          setOpen(true);
+        }}
+        className="toggleBtn"
+      >
         <Burger />
       </button>
       <div
-        onClick={() => setOpen(false)}
+        onClick={() => {
+          setOpen(false);
+        }}
         className={`${'overlay'} ${getOverlayStyled()}`}
       ></div>
       <aside className={'aside'}>
         <div className={getStyled()}>
           <div className={'closeContainer'}>
-            <button className="closeBtn" onClick={() => setOpen(false)}>
+            <button
+              className="closeBtn"
+              onClick={() => {
+                setOpen(false);
+              }}
+            >
               <Close />
             </button>
           </div>

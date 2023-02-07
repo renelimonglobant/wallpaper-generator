@@ -1,7 +1,6 @@
-type GithubProps = {
-  [rest: string]: any;
-};
-const Github = ({ ...rest }: GithubProps) => {
+import type { SVGProps } from 'react';
+type TSVGElementProps = SVGProps<SVGSVGElement>;
+const Github: React.FunctionComponent<TSVGElementProps> = ({ ...rest }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

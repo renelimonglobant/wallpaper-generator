@@ -1,6 +1,6 @@
-export type ColorsArray = Array<Color>
+export type ColorsArray = Color[];
 
-export  type Color = {
-    step: number;
-    color: string;
-};
+export interface Color {
+  step: number;
+  color: string;
+}

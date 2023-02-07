@@ -1,3 +1,4 @@
+import { type FunctionComponent } from 'react';
 import {
   Accordion as AccordionLib,
   AccordionItem,
@@ -7,11 +8,11 @@ import {
 } from 'react-accessible-accordion';
 import './accordion.css';
 
-type AccordionProps = {
+interface AccordionProps {
   render: Array<{ title: string; item: React.ReactNode }>;
-};
+}
 
-const Accordion = ({ render }: AccordionProps) => {
+const Accordion: FunctionComponent<AccordionProps> = ({ render }) => {
   return (
     <AccordionLib className="Accordion" allowMultipleExpanded allowZeroExpanded>
       {render.map((i) => (

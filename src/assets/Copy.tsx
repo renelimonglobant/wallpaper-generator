@@ -1,7 +1,6 @@
-type CopyProps = {
-  [rest: string]: any;
-};
-const Copy = ({ ...rest }: CopyProps) => {
+import type { SVGProps } from 'react';
+type TSVGElementProps = SVGProps<SVGSVGElement>;
+const Copy: React.FunctionComponent<TSVGElementProps> = ({ ...rest }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

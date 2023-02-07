@@ -13,17 +13,18 @@ import Header from '../../templates/Header';
 import HoursForm from '../../organisms/HoursForm';
 import Footer from '../../templates/Footer';
 import GradientRingForm from '../../organisms/GradientRingForm';
-import { InitialState } from '../../../store/InitialState';
+import { InitialState, type State } from '../../../store/InitialState';
 import { reducer } from '../../../store/Reducer';
 import { Resolutions } from '../../../store/Resolutions';
 import Select from '../../atoms/Select';
+import { type ColorsArray } from '../../../types';
 
-const getJSDocTemplateTag = () => {
-  return localStorage.getItem('state')
+const getJSDocTemplateTag = (): State => {
+  return localStorage.getItem('state') !== undefined
     ? JSON.parse(localStorage.getItem('state') as string)
     : InitialState;
 };
-function App() {
+const App: React.FunctionComponent = () => {
   const canvas = useRef<HTMLCanvasElement>(null);
   const [context, setContext] = useState<CanvasRenderingContext2D | null>(null);
   const gradientCanvas = useRef<HTMLCanvasElement>(null);
@@ -46,9 +47,9 @@ function App() {
   }, [transformations]);
 
   useEffect(() => {
-    const c = canvas.current as HTMLCanvasElement | null;
+    const c = canvas.current;
     setContext(c?.getContext('2d') as CanvasRenderingContext2D);
-    if (context) {
+    if (context != null) {
       setTimeout(() => {
         context.drawImage(gradientCanvas.current as CanvasImageSource, 0, 0);
         context.drawImage(ringCanvas.current as CanvasImageSource, 0, 0);
@@ -58,11 +59,11 @@ function App() {
   }, [context, contextGradient, contextRing, contextHours, transformations]);
 
   useEffect(() => {
-    const c = gradientCanvas.current as HTMLCanvasElement | null;
+    const c = gradientCanvas.current;
     setContextGradient(c?.getContext('2d') as CanvasRenderingContext2D);
-    if (contextGradient) {
+    if (contextGradient != null) {
       drawConicalGradient(
-        contextGradient as CanvasRenderingContext2D,
+        contextGradient,
         transformations.width,
         transformations.height,
         transformations.conicGradient.colorList,
@@ -79,18 +80,18 @@ function App() {
   ]);
 
   useEffect(() => {
-    const c = ringCanvas.current as HTMLCanvasElement | null;
+    const c = ringCanvas.current;
     setContextRing(c?.getContext('2d') as CanvasRenderingContext2D);
-    if (contextRing) {
+    if (contextRing != null) {
       contextRing.clearRect(
         0,
         0,
         transformations.width,
         transformations.height
       );
-      transformations.gradientRing.enabled &&
+      transformations.gradientRing.enabled === true &&
         drawGradientCircle(
-          contextRing as CanvasRenderingContext2D,
+          contextRing,
           transformations.gradientRing.colorList,
           transformations.gradientRing.x,
           transformations.gradientRing.y,
@@ -109,18 +110,18 @@ function App() {
   ]);
 
   useEffect(() => {
-    const c = hoursCanvas.current as HTMLCanvasElement | null;
+    const c = hoursCanvas.current;
     setContextHours(c?.getContext('2d') as CanvasRenderingContext2D);
-    if (contextHours) {
+    if (contextHours != null) {
       contextHours.clearRect(
         0,
         0,
         transformations.width,
         transformations.height
       );
-      transformations.hours.enabled &&
+      transformations.hours.enabled === true &&
         drawNumbers(
-          contextHours as CanvasRenderingContext2D,
+          contextHours,
           transformations.hours.radius,
           transformations.hours.x,
           transformations.hours.y,
@@ -140,12 +141,12 @@ function App() {
     transformations.height,
   ]);
 
-  const onSave = () => {
-    let downloadLink = document.createElement('a');
+  const onSave = (): void => {
+    const downloadLink = document.createElement('a');
     downloadLink.setAttribute('download', 'wallpaper.png');
-    let canvasObj = canvas.current;
-    let dataURL = canvasObj?.toDataURL('image/png');
-    let url = dataURL?.replace(
+    const canvasObj = canvas.current;
+    const dataURL = canvasObj?.toDataURL('image/png');
+    const url = dataURL?.replace(
       /^data:image\/png/,
       'data:application/octet-stream'
     );
@@ -168,8 +169,8 @@ function App() {
     shine: number,
     xOffset: number,
     yOffset: number,
-    colorList: Array<{}>
-  ) => {
+    colorList: ColorsArray
+  ): void => {
     dispatch({
       type: 'conical-gradient',
       value: { shine, xOffset, yOffset, colorList },
@@ -185,8 +186,8 @@ function App() {
     bold: boolean,
     italic: boolean,
     color: string,
-    timeFormat: Array<string>
-  ) => {
+    timeFormat: string[]
+  ): void => {
     dispatch({
       type: 'hours',
       value: {
@@ -210,8 +211,8 @@ function App() {
     y: number,
     radius: number,
     strokeWidth: number,
-    colorList: Array<{}>
-  ) => {
+    colorList: ColorsArray
+  ): void => {
     dispatch({
       type: 'gradient-ring',
       value: {
@@ -226,7 +227,7 @@ function App() {
     });
   };
 
-  const onChangeRatio = (value: string) => {
+  const onChangeRatio = (value: string): void => {
     const dimensions = Resolutions.find((o) => o.key === value);
     dispatch({
       type: 'resize-canvas',
@@ -339,6 +340,6 @@ function App() {
       <Footer />
     </div>
   );
-}
+};
 
 export default App;

@@ -1,7 +1,6 @@
-type CloseProps = {
-  [rest: string]: any;
-};
-const Close = ({ ...rest }: CloseProps) => {
+import type { SVGProps } from 'react';
+type TSVGElementProps = SVGProps<SVGSVGElement>;
+const Close: React.FunctionComponent<TSVGElementProps> = ({ ...rest }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

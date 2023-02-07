@@ -1,9 +1,9 @@
-type RatioOptions = {
+interface RatioOptions {
   key: string;
   label: string;
   height: number;
   width: number;
-};
+}
 
 export const Resolutions: RatioOptions[] = [
   {

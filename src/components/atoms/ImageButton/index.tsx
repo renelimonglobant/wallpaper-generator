@@ -1,15 +1,15 @@
 import './imageButton.css';
 
-type ImageButtonProps = {
+interface ImageButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   imgsrc?: string;
   imgalt?: string;
   svg?: JSX.Element;
   height?: number;
   width?: number;
-  [rest: string]: any;
-};
+}
 
-const ImageButton = ({
+const ImageButton: React.FunctionComponent<ImageButtonProps> = ({
   imgsrc,
   imgalt,
   height = 20,
@@ -19,7 +19,7 @@ const ImageButton = ({
 }: ImageButtonProps) => {
   return (
     <button className="img-btn" {...rest}>
-      {imgsrc ? (
+      {imgsrc !== '' ? (
         <img src={imgsrc} height={height} width={width} alt={imgalt} />
       ) : (
         svg

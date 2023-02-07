@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import ColorBox from '../../molecules/ColorBox';
 import InputRange from '../../atoms/InputRange';
-import { Color, ColorsArray } from '../../../types';
+import { type Color, type ColorsArray } from '../../../types';
 
-type ConicGradientFormProps = {
+interface ConicGradientFormProps {
   initialShine: number;
   initialX: number;
   initialY: number;
@@ -14,15 +14,15 @@ type ConicGradientFormProps = {
     y: number,
     colors: ColorsArray
   ) => void;
-};
+}
 
-const ConicGradientForm = ({
+const ConicGradientForm: React.FunctionComponent<ConicGradientFormProps> = ({
   initialShine,
   initialX,
   initialY,
   initialColors,
   onChangeForm,
-}: ConicGradientFormProps) => {
+}) => {
   const [shine, setShine] = useState<number>(initialShine);
   const [xOffset, setXOffset] = useState<number>(initialX);
   const [yOffset, setYOffset] = useState<number>(initialY);
@@ -34,25 +34,26 @@ const ConicGradientForm = ({
   }, [colorList, xOffset, yOffset, shine]);
 
   const onChangeRange =
-    (fn: Function) => (e: React.ChangeEvent<HTMLInputElement>) => {
+    (fn: (n: number) => void) =>
+    (e: React.ChangeEvent<HTMLInputElement>): void => {
       fn(parseInt(e.target.value));
     };
 
-  const onChangeColors = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onChangeColors = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const limit = parseInt(e.target.value);
     const newList = [];
     for (let i = 0; i < limit; i++) {
       newList[i] = {
         step: i / (limit - 1),
-        color: !!colorList[i] ? colorList[i].color : '#000000',
+        color: colorList[i] !== undefined ? colorList[i].color : '#000000',
       };
     }
     setColorList(newList);
   };
 
-  const onChangeColor = (color: string, step: number) => {
-    setColorList((prevList: Array<Color>) =>
-      prevList.reduce(
+  const onChangeColor = (color: string, step: number): void => {
+    setColorList((prevList: Color[]) =>
+      prevList.reduce<Color[]>(
         (acc, item) =>
           item.step === step
             ? [
@@ -63,7 +64,7 @@ const ConicGradientForm = ({
                 },
               ]
             : [...acc, item],
-        [] as Color[]
+        []
       )
     );
   };
@@ -107,19 +108,18 @@ const ConicGradientForm = ({
         defaultValue={initialColors.length}
         onChange={onChangeColors}
       />
-      {colorList &&
-        colorList.map((inputcolor: Color, i: number) => (
-          <React.Fragment key={i}>
-            <ColorBox
-              inputText={inputcolor.color}
-              id={`range-${inputcolor.step}`}
-              onChangeColor={(color) => {
-                onChangeColor(color, inputcolor.step);
-              }}
-              defaultColor={inputcolor.color}
-            />
-          </React.Fragment>
-        ))}
+      {colorList.map((inputcolor: Color, i: number) => (
+        <React.Fragment key={i}>
+          <ColorBox
+            inputText={inputcolor.color}
+            id={`range-${inputcolor.step}`}
+            onChangeColor={(color) => {
+              onChangeColor(color, inputcolor.step);
+            }}
+            defaultColor={inputcolor.color}
+          />
+        </React.Fragment>
+      ))}
     </div>
   );
 };

@@ -1,24 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import Input from '../../atoms/Input';
-import EmojiPicker, { EmojiClickData, Emoji } from 'emoji-picker-react';
+import EmojiPicker, { type EmojiClickData, Emoji } from 'emoji-picker-react';
 import ImageButton from '../../atoms/ImageButton';
 import './emoji-picker.css';
 
-type EmojiPickerBoxProps = {
+interface EmojiPickerBoxProps
+  extends React.InputHTMLAttributes<HTMLInputElement> {
   title: string;
   defaultValue: string;
   id: string;
   onChangeEmoji: (params: string) => void;
-  [rest: string]: any;
-};
+}
 
-const EmojiPickerBox = ({
+const EmojiPickerBox: React.FunctionComponent<EmojiPickerBoxProps> = ({
   title,
   id,
   onChangeEmoji,
   defaultValue = '#000000',
   ...rest
-}: EmojiPickerBoxProps) => {
+}) => {
   const [value, setValue] = useState<string>(defaultValue);
   const [show, setShow] = useState<boolean>(false);
 
@@ -27,15 +27,17 @@ const EmojiPickerBox = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value]);
 
-  const onChangeCurrentValue = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onChangeCurrentValue = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ): void => {
     setValue(e.target.value);
   };
 
-  const onSelectEmoji = (e: EmojiClickData) => {
+  const onSelectEmoji = (e: EmojiClickData): void => {
     setValue((prev) => prev + e.emoji);
   };
 
-  const onTogglePicker = (_e: React.ChangeEvent<HTMLInputElement>) => {
+  const onTogglePicker = (_e: React.MouseEvent<HTMLButtonElement>): void => {
     setShow(!show);
   };
 

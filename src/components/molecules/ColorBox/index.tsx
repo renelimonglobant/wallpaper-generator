@@ -11,17 +11,16 @@ interface ColorBoxProps extends React.InputHTMLAttributes<HTMLInputElement> {
   id: string;
   disabled?: boolean;
   onChangeColor: (params: string) => void;
-  // [rest: string]: any;
 }
 
-const ColorBox = ({
+const ColorBox: React.FunctionComponent<ColorBoxProps> = ({
   inputText,
   id,
   onChangeColor,
   defaultColor = '#000000',
   disabled = false,
   ...rest
-}: ColorBoxProps) => {
+}) => {
   const [color, setColor] = useState<string>(defaultColor);
 
   useEffect(() => {
@@ -29,18 +28,20 @@ const ColorBox = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [color]);
 
-  const onCopy = (_e: React.ChangeEvent<HTMLInputElement>) => {
-    navigator.clipboard.writeText(color);
+  const onCopy = (_e: React.MouseEvent<HTMLButtonElement>): void => {
+    void navigator.clipboard.writeText(color);
   };
 
-  const onPaste = (_e: React.ChangeEvent<HTMLInputElement>) => {
-    navigator.clipboard.readText().then((clipText) => {
+  const onPaste = (_e: React.MouseEvent<HTMLButtonElement>): void => {
+    void navigator.clipboard.readText().then((clipText) => {
       const text = /^#[0-9A-F]{6}$/i.test(clipText) ? clipText : '#000000';
       setColor(text);
     });
   };
 
-  const onChangeCurrentColor = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onChangeCurrentColor = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ): void => {
     setColor(e.target.value);
   };
 

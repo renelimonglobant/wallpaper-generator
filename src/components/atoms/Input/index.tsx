@@ -6,7 +6,12 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   // [rest: string]: any;
 }
 
-const Input = ({ label, id, type = 'text', ...rest }: InputProps) => {
+const Input: React.FunctionComponent<InputProps> = ({
+  label,
+  id,
+  type = 'text',
+  ...rest
+}: InputProps) => {
   return (
     <>
       <label className="label-input" htmlFor={id}>

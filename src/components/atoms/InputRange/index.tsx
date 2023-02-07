@@ -5,16 +5,15 @@ interface InputRangeProps extends React.InputHTMLAttributes<HTMLInputElement> {
   id: string;
   min?: number;
   max?: number;
-  [rest: string]: any;
 }
 
-const InputRange = ({
+const InputRange: React.FunctionComponent<InputRangeProps> = ({
   label,
   id,
   min = 0,
   max = 5,
   ...rest
-}: InputRangeProps) => {
+}) => {
   return (
     <div className="range-box">
       <label className="label-range" htmlFor={id}>

@@ -7,10 +7,9 @@ interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
   label?: string;
   options: Array<{ value: string; label: string }>;
   setValue: (value: string) => void;
-  [rest: string]: any;
 }
 
-const Select = ({
+const Select: React.FunctionComponent<SelectProps> = ({
   id,
   defaultValue,
   options,
@@ -19,9 +18,9 @@ const Select = ({
   ...rest
 }: SelectProps) => {
   const [selectedOption, setSelectedOption] = useState(
-    defaultValue || options[0].value
+    defaultValue?.trim()?.length > 0 ? defaultValue : options[0].value
   );
-  const onSelectChange = (value: string) => {
+  const onSelectChange = (value: string): void => {
     setSelectedOption(value);
     setValue(value);
   };
@@ -34,7 +33,9 @@ const Select = ({
         className="select"
         id={`select-${id}`}
         value={selectedOption}
-        onChange={(e) => onSelectChange(e.target.value)}
+        onChange={(e) => {
+          onSelectChange(e.target.value);
+        }}
         {...rest}
       >
         {options.map((o) => (

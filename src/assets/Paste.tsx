@@ -1,7 +1,6 @@
-type PasteProps = {
-  [rest: string]: any;
-};
-const Paste = ({ ...rest }: PasteProps) => {
+import type { SVGProps } from 'react';
+type TSVGElementProps = SVGProps<SVGSVGElement>;
+const Paste: React.FunctionComponent<TSVGElementProps> = ({ ...rest }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

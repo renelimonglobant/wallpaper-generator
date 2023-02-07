@@ -1,6 +1,6 @@
-import { ColorsArray } from '../types';
+import { type ColorsArray } from '../types';
 
-export type State = {
+export interface State {
   height: number;
   width: number;
   conicGradient: {
@@ -29,9 +29,9 @@ export type State = {
     bold: boolean;
     italic: boolean;
     color: string;
-    timeFormat: Array<string>;
+    timeFormat: string[];
   };
-};
+}
 
 export const InitialState: State = {
   width: 460, // 454

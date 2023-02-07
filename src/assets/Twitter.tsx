@@ -1,7 +1,6 @@
-type TwitterProps = {
-  [rest: string]: any;
-};
-const Twitter = ({ ...rest }: TwitterProps) => {
+import type { SVGProps } from 'react';
+type TSVGElementProps = SVGProps<SVGSVGElement>;
+const Twitter: React.FunctionComponent<TSVGElementProps> = ({ ...rest }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
