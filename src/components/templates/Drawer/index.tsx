@@ -21,7 +21,7 @@ const Drawer: FunctionComponent<DrawerProps> = ({ src }) => {
         onClick={() => {
           setOpen(true);
         }}
-        className="toggleBtn"
+        className="toggle-btn"
       >
         <Burger />
       </button>
@@ -33,9 +33,9 @@ const Drawer: FunctionComponent<DrawerProps> = ({ src }) => {
       ></div>
       <aside className={'aside'}>
         <div className={getStyled()}>
-          <div className={'closeContainer'}>
+          <div className={'close-container'}>
             <button
-              className="closeBtn"
+              className="close-btn"
               onClick={() => {
                 setOpen(false);
               }}

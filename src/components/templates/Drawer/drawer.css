@@ -4,40 +4,45 @@
   height: 25px;
 }
 
-.toggleBtn,
-.closeBtn {
+.toggle-btn,
+.close-btn {
   background-color: var(--clr-secondary);
   color: var(--clr-light);
   outline: none;
   border-radius: 5px;
-  padding: 0px 4px;
+  padding: 0 4px;
   margin-left: 10px;
   border: none;
   border: 1px solid var(--clr-secondary);
 }
-.toggleBtn svg,
-.closeBtn svg {
+
+.toggle-btn svg,
+.close-btn svg {
   width: 24px !important;
 }
-.toggleBtn:hover,
-.closeBtn:hover {
-  color: var(--clr-gray);
-  border: 1px solid var(--clr-gray);
-}
 
-.closeContainer {
-  width: 100%;
-  text-align: right;
-}
-.closeBtn {
+.close-btn {
   margin: 10px;
   padding: 5px 7px;
   border-radius: 25px;
 }
-/*overlay*/
-.overlay {
-  background-color: rgba(0, 0, 0, 0.3);
+
+.toggle-btn:hover,
+.close-btn:hover {
+  color: var(--clr-gray);
+  border: 1px solid var(--clr-gray);
 }
+
+.close-container {
+  width: 100%;
+  text-align: right;
+}
+
+/* overlay */
+.overlay {
+  background-color: rgb(0 0 0 / 30%);
+}
+
 .darken {
   position: fixed;
   top: 0;
@@ -46,54 +51,65 @@
   width: 100%;
   z-index: 0;
 }
-/*sidebar*/
+
+/* sidebar */
 .aside {
   overflow-y: auto;
   position: fixed;
-  top: 0px;
+  top: 0;
   left: 0;
   height: 100vh;
   background-color: var(--clr-light);
   color: var(--clr-primary);
+
   /* -webkit-box-shadow: 13px 1px 10px 1px rgba(0, 0, 0, 0.57);
   box-shadow: 13px 1px 10px 1px rgba(0, 0, 0, 0.57); */
 }
+
 .aside > div {
   position: relative;
   width: 270px;
   height: 100%;
 }
-.aside .list{
-  padding: 0px 20px;
+
+.aside .list {
+  padding: 0 20px;
 }
+
 .aside a {
   text-align: left;
   font-size: 20px;
   display: inline-block;
   text-decoration: none;
   color: var(--clr-primary);
-  padding: 5px 0px !important;
+  padding: 5px 0 !important;
 }
-.aside a:hover,
-.aside a:hover svg {
-  color: var(--clr-secondary);
-  fill: var(--clr-secondary) !important;
-}
+
 .aside a svg {
   fill: var(--clr-primary) !important;
   width: 20px !important;
   margin-right: 15px;
 }
+
+.aside a:hover,
+.aside a:hover svg {
+  color: var(--clr-secondary);
+  fill: var(--clr-secondary) !important;
+}
+
 .open {
   transition: margin-left 0.7s;
   margin-left: 0;
 }
+
 .closed {
   margin-left: -270px;
 }
+
 .aside nav {
   margin-top: 1em;
 }
+
 .aside ul {
   padding: 0;
   list-style-type: none;

@@ -10,37 +10,46 @@
   border-bottom: solid 5px var(--clr-alternative);
   border-top: solid 5px var(--clr-alternative);
 }
+
 .header .head {
   flex: 5;
   text-align: center;
 }
+
 .header .head h1 {
   display: inline-block;
   padding: 5px;
   margin-left: 10px;
 }
+
 .header .head img {
   width: 25px;
 }
+
 .header .head > * {
   display: inline-block;
 }
+
 .header .side {
   flex: 2;
   text-align: center;
 }
+
 .header .side a {
   margin: 0 6px;
 }
+
 .header .side svg {
   display: inline;
   width: 27px;
   height: auto;
   fill: var(--clr-light);
 }
+
 .header .side svg:hover {
   fill: var(--clr-alternative);
 }
+
 .drawer {
   display: none;
 }
@@ -49,13 +58,16 @@
   .header .head img {
     display: none;
   }
+
   .header .head h1 {
     font-size: 1.8em;
     margin: 0;
   }
+
   .drawer {
     display: block;
   }
+
   .header .side .icons {
     display: none;
   }

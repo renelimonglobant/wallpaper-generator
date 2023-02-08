@@ -6,9 +6,11 @@
   width: 30px;
   height: auto;
 }
+
 .img-btn:hover {
   background-color: var(--clr-gray);
 }
+
 .img-btn svg {
   color: var(--clr-secondary);
 }

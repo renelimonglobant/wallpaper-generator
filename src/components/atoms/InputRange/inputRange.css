@@ -1,10 +1,12 @@
 .range-box {
   margin-bottom: 10px;
 }
+
 .label-range {
   text-align: left;
   display: block;
 }
+
 .input-range {
   width: 100% !important;
   accent-color: var(--clr-alternative);
