@@ -1,5 +1,6 @@
 import './button.css';
-//hello f d
+import ImageButton from '../ImageButton';
+
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   id: string;
   text: string;
@@ -11,7 +12,7 @@ const Button: React.FunctionComponent<ButtonProps> = ({
   ...rest
 }: ButtonProps) => {
   return (
-    <div>
+    <div {...rest}>
       <button className="btn" id={`btn-${id}`} {...rest}>
         {text}
       </button>
