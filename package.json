@@ -53,9 +53,9 @@
     ]
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.50.0",
-    "@typescript-eslint/parser": "^5.50.0",
-    "eslint": "^8.33.0",
+    "@typescript-eslint/eslint-plugin": "^5.52.0",
+    "@typescript-eslint/parser": "^5.52.0",
+    "eslint": "^8.34.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-config-standard-with-typescript": "^34.0.0",
     "eslint-import-resolver-typescript": "^3.5.3",
@@ -66,10 +66,10 @@
     "eslint-plugin-react": "^7.32.2",
     "gh-pages": "^4.0.0",
     "husky": "^8.0.0",
-    "lint-staged": "^13.1.1",
-    "prettier": "^2.8.3",
+    "lint-staged": "^13.1.2",
+    "prettier": "^2.8.4",
     "stylelint": "^14.16.1",
-    "stylelint-config-prettier": "^9.0.4",
+    "stylelint-config-prettier": "^9.0.5",
     "stylelint-config-standard": "^29.0.0",
     "stylelint-prettier": "^2.0.0",
     "typescript": "^4.9.5"
